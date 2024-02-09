@@ -1,18 +1,21 @@
 #  The contact options.
 
 - type: github
-  icon: "fab fa-github"
-
-- type: twitter
-  icon: "fa-brands fa-x-twitter"
+  icon: /assets/svgs/brands/github.svg
+  url: 'https://github.com/lucasflores42'
 
 - type: email
-  icon: "fas fa-envelope"
-  noblank: true # open link in current tab
+  icon: /assets/svgs/solid/envelope.svg
+  #url: ''
 
-- type: rss
-  icon: "fas fa-rss"
-  noblank: true
+- type: google-scholar
+  icon: /assets/svgs/brands/google-scholar.svg
+  url:  'https://scholar.google.com/citations?user=E4N3xHQAAAAJ&hl=pt-BR'
+
+- type: orcid
+  icon: /assets/svgs/brands/orcid.svg
+  url: 'https://orcid.org/0000-0002-9638-8585'
+
 # Uncomment and complete the url below to enable more contact options
 #
 # - type: mastodon
