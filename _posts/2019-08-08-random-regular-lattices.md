@@ -4,7 +4,7 @@ author: cotes
 date: 2019-08-08 11:33:00 +0800
 categories: [Game Theory, lattices]
 tags: [code, C, lattices]
-pin: true
+pin: false
 math: true
 mermaid: true
 
