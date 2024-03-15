@@ -20,7 +20,7 @@ Code to plot in gnuplot every .txt file specified in FILES.
 
 
 
-```gnu
+```bash
 #set terminal postscript eps enhanced color
 #set output "${name1}_estabilidade.eps"
 
