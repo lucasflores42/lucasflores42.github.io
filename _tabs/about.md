@@ -34,6 +34,7 @@ Universidade Federal do Rio Grande do Sul, UFRGS, Brasil
 ## Reviews
 ---
 - **APPLIED MATHEMATICS AND COMPUTATION** *2022-Atual*
+- **JOURNAL OF THEORETICAL BIOLOGY** *2024-Atual*
 
 ## Publications
 ---
