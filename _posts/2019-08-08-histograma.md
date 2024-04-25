@@ -7,7 +7,7 @@ tags: [code, awk]
 pin: false
 math: true
 mermaid: true
-
+hidden: true
 ---
 
 [Download file](/files/scripts/data_analysis/histograma.awk){:download}

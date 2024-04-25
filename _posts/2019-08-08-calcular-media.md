@@ -7,7 +7,7 @@ tags: [code, bash]
 pin: false
 math: true
 mermaid: true
-
+hidden: true
 ---
 
 [Download file](/files/scripts/data_analysis/calcular_media_lucas.sh){:download}

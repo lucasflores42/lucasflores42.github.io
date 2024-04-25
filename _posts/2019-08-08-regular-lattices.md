@@ -7,7 +7,7 @@ tags: [code, C, lattices]
 pin: false
 math: true
 mermaid: true
-
+hidden: true
 ---
 
 [Download file](/files/scripts/regular_lattices.h){:download}
