@@ -12,21 +12,6 @@ mermaid: true
 
 ---
 
-aaaaaaaa
-
-<!--more-->
-
-<div style="text-align: right;">
-  <a href="/papers/symbiotic/1-s2.0-S0022519321001594-main.pdf" target="_blank">Link to PDF</a> 
-</div>
-
-
-<style>
-  .content {
-    text-align: justify;
-    text-justify: inter-word; /* You can also use 'inter-character' for a different effect */
-  }
-</style>
 
 text <a href="/papers/symbiotic/1-s2.0-S0022519321001594-main.pdf" target="_blank">here</a> text
 
