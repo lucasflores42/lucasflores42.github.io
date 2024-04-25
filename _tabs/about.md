@@ -8,17 +8,17 @@ toc: true
 
 ## Education
 ---
-**Doutorado em Física**  *2021 - Atual*  
+**Physics PhD**  *2021 - Atual*  
 
 *Universidade Federal do Rio Grande do Sul, UFRGS, Brasil*
-- Orientador: Mendeli H. Vainstein.
-- Coorientador: Heitor C. M. Fernandes.
+- Advisor: Mendeli H. Vainstein.
+- Co-advisor: Heitor C. M. Fernandes.
 
-  - *Doutorado sanduíche em International Centre For Theoretical Physics (Orientador: Matteo Marsili)*
-  - *Doutorado sanduíche em Max Planck Institute of Evolutionary Biology (Orientador: Arne Traulsen)*
+  - *Internship at Centre For Theoretical Physics (Advisor: Matteo Marsili)*
+  - *Internship at Max Planck Institute of Evolutionary Biology (Advisor: Arne Traulsen)*
 
 
-**Graduação em Física**  *2017 - 2021*
+**Physics B.Sc.**  *2017 - 2021*
 
 Universidade Federal do Rio Grande do Sul, UFRGS, Brasil
 
