@@ -1,6 +1,6 @@
 ---
 title: Media Temporal Eq.
-author: cotes
+#author: cotes
 date: 2019-08-08 11:33:00 +0800
 categories: [Data analysis, awk]
 tags: [code, awk]
@@ -10,7 +10,7 @@ mermaid: true
 
 ---
 
-[Download file](/codes/scripts/media_temporal_equilibrio.awk){:download}
+[Download file](/files/scripts/data_analysis/media_temporal_equilibrio.awk){:download}
 
 
 Code used in calcular_media.sh to take the equilibrium densities from every sample.

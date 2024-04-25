@@ -1,6 +1,6 @@
 ---
 title: Transf. matrix
-author: cotes
+#author: cotes
 date: 2019-08-08 11:33:00 +0800
 categories: [Data analysis, awk]
 tags: [code, awk]
@@ -10,7 +10,7 @@ mermaid: true
 
 ---
 
-[Download file](/codes/scripts/transformar_em_matriz.awk){:download}
+[Download file](/files/scripts/data_analysis/transformar_em_matriz.awk){:download}
 
 
 Code to take a file with the parameters and results in columns and transform into a matrix. Need to be used to use the heatmap.gp.

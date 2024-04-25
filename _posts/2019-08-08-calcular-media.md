@@ -1,6 +1,6 @@
 ---
 title: Calcular media
-author: cotes
+#author: cotes
 date: 2019-08-08 11:33:00 +0800
 categories: [Data analysis, bash]
 tags: [code, bash]
@@ -10,7 +10,7 @@ mermaid: true
 
 ---
 
-[Download file](/codes/scripts/calcular_media_lucas.sh){:download}
+[Download file](/files/scripts/data_analysis/calcular_media_lucas.sh){:download}
 
 
 Code to apply media_temporal.awk in all files, merging every equilibrium density from every sample in the same file. 

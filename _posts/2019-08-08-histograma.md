@@ -1,6 +1,6 @@
 ---
 title: Histograma
-author: cotes
+#author: cotes
 date: 2019-08-08 11:33:00 +0800
 categories: [Data analysis, awk]
 tags: [code, awk]
@@ -10,7 +10,7 @@ mermaid: true
 
 ---
 
-[Download file](/codes/scripts/histograma.awk){:download}
+[Download file](/files/scripts/data_analysis/histograma.awk){:download}
 
 
 Code used to separate some parameter values from the complete file.

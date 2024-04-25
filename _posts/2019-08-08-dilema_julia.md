@@ -1,6 +1,6 @@
 ---
 title: Dilemma (julia version)
-author: cotes
+#author: cotes
 date: 2019-08-08 11:33:00 +0800
 categories: [Evolutionary Game Theory, simulations]
 tags: [code, C]
@@ -10,7 +10,7 @@ mermaid: true
 
 ---
 
-[Download file](/codes/scripts/dilema.c){:download}
+[Download file](/files/scripts/egt.jl){:download}
 
 
 

@@ -1,6 +1,6 @@
 ---
 title: Random Regular lattices
-author: cotes
+#author: cotes
 date: 2019-08-08 11:33:00 +0800
 categories: [Evolutionary Game Theory, lattices]
 tags: [code, C, lattices]
@@ -10,7 +10,7 @@ mermaid: true
 
 ---
 
-[Download file](/codes/misc/random_lattices.c){:download}
+
 
 
 

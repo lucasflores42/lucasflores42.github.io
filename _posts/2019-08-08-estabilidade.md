@@ -1,6 +1,6 @@
 ---
 title: Estabilidade
-author: cotes
+#author: cotes
 date: 2019-08-08 11:33:00 +0800
 categories: [Data analysis,gnuplot]
 tags: [code, gnuplot]
@@ -9,7 +9,7 @@ math: true
 mermaid: true
 
 ---
-[Download file](/codes/scripts/estabilidade.gp){:download}
+[Download file](/files/scripts/data_analysis/estabilidade.gp){:download}
 
 
 
