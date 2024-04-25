@@ -8,12 +8,12 @@ tags: [publication]
 pin: true
 math: true
 mermaid: true
-#[PDF](/papers/symbiotic/1-s2.0-S0022519321001594-main.pdf){:target="_blank"}
+
 
 ---
 
 
-text <a href="/papers/symbiotic/1-s2.0-S0022519321001594-main.pdf" target="_blank">here</a> text
+text <a href="/files/papers/symbiotic/1-s2.0-S0022519321001594-main.pdf" target="_blank">here</a> text
 
 ## Abstract
 
