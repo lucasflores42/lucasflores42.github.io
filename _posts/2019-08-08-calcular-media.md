@@ -1,5 +1,5 @@
 ---
-title: Calcular media
+title: Merge equilibrium samples
 #author: cotes
 date: 2019-08-08 11:33:00 +0800
 categories: [Data analysis, bash]
@@ -15,12 +15,9 @@ hidden: true
 
 Code to apply media_temporal.awk in all files, merging every equilibrium density from every sample in the same file. 
 
+My simulation files have the parameter values in it so I can extract them and put as columns in this code.
 
 Run with ./calcular_media.awk > file
-
-
-
-
 
 
 ```awk

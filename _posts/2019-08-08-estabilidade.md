@@ -1,5 +1,5 @@
 ---
-title: Estabilidade
+title: Stability Plot
 #author: cotes
 date: 2019-08-08 11:33:00 +0800
 categories: [Data analysis,gnuplot]
@@ -13,12 +13,8 @@ hidden: true
 
 
 
-Code to plot in gnuplot every .txt file specified in FILES.
-
-
-
-
-
+Code to plot in gnuplot every .txt time dynamics file specified in FILES.
+Useful to check stability.
 
 ```bash
 #set terminal postscript eps enhanced color

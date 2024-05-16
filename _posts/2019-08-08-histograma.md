@@ -1,5 +1,5 @@
 ---
-title: Histograma
+title: Histogram
 #author: cotes
 date: 2019-08-08 11:33:00 +0800
 categories: [Data analysis, awk]
@@ -14,9 +14,6 @@ hidden: true
 
 
 Code used to separate some parameter values from the complete file.
-
-
-
 
 
 
