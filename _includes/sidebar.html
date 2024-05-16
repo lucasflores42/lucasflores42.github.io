@@ -35,35 +35,28 @@
           <span>{{ site.data.locales[include.lang].tabs.home | upcase }}</span>
         </a>
       </li>
-      <!-- the real tabs -->
+
+      <!--SIDEBAR TABS -->
       {% for tab in site.tabs %}
-        <li class="nav-item{% if tab.url == page.url %}{{ " active" }}{% endif %}">
-          <a href="{{ tab.url | relative_url }}" class="nav-link">
-            {% if tab.type == 'publications' %}
-              <i style="opacity: 0.5;">
-                <img src="/assets/svgs/solid/book-open.svg" alt="{{ entry.type }}" width="18" height="18">
-              </i>
-            {% else %}
-              <i class="fa-fw {{ tab.icon }}"></i>
-            {% endif %}
-            {% capture tab_name %}{{ tab.url | split: '/' }}{% endcapture %}
-            <span>{{ site.data.locales[include.lang].tabs.[tab_name] | default: tab.title | upcase }}</span>
-          </a>
-        </li>
+      <li class="nav-item{% if tab.url == page.url %}{{ " active" }}{% endif %}">
+        <a href="{{ tab.url | relative_url }}" class="nav-link">
+            <i class="fa-fw {{ tab.icon }}"></i>
+          {% capture tab_name %}{{ tab.url | split: '/' }}{% endcapture %}
+          <span>{{ site.data.locales[include.lang].tabs.[tab_name] | default: tab.title | upcase }}</span>
+        </a>
+      </li>
       {% endfor %}
     </ul>
   </nav>
 
+  <!--SIDEBAR BOTTOM ICONS -->
   <div class="sidebar-bottom d-flex flex-wrap align-items-center w-100">
     {% unless site.theme_mode %}
       <button type="button" class="mode-toggle btn" aria-label="Switch Mode">
         <i class="fas fa-adjust"></i>
       </button>
-
-      {% if site.data.contact.size > 0 %}
-        <span class="icon-border"></span>
-      {% endif %}
-    {% endunless %}
+      <span class="icon-border"></span>
+      {% endunless %}
 
     {% for entry in site.data.contact %}
       {% if entry.type == 'email' %}
@@ -94,25 +87,23 @@
           {% unless link_types == empty %}
             rel="{{ link_types }}"
           {% endunless %}
-        >
-          {% if entry.type == 'google-scholar' %}
-            <img src="/assets/svgs/brands/google-scholar.svg" title="Google Scholar" alt="{{ entry.type }}" width="18" height="18" style="opacity: 0.5;">
-          {% else %}
-            <i class="{{ entry.icon }}"></i>
-          {% endif %}
-          {% if entry.type == 'orcid' %}
-            <img src="/assets/svgs/brands/orcid.svg" title="Orcid" alt="{{ entry.type }}" width="18" height="18" style="opacity: 0.5;">
-          {% else %}
-            <i class="{{ entry.icon }}"></i>
-          {% endif %}
-          {% if entry.type == 'github' %}
-            <img src="/assets/svgs/brands/github.svg" title="Github" alt="{{ entry.type }}" width="18" height="18" style="opacity: 0.5;">
-          {% else %}
-            <i class="{{ entry.icon }}"></i>
-          {% endif %}
+        >    
         </a>
       {% endif %}
     {% endfor %}
+    <a href="https://github.com/lucasflores42" aria-label="github" target="_blank" rel="noopener noreferrer"> 
+      <i class="fab fa-github"></i> 
+    </a>
+    <a href="javascript:location.href = 'mailto:' + ['lucassflores42@gmail.com'].join('@')" aria-label="email">
+      <i class="fas fa-envelope"></i> 
+    </a>
+    <a href="https://scholar.google.com/citations?user=E4N3xHQAAAAJ&hl=pt-BR" aria-label="scholar" target="_blank" rel="noopener noreferrer"> 
+      <i class="fab fa-google-scholar"></i> 
+    </a>
+    <a href="https://orcid.org/0000-0002-9638-8585" aria-label="orcid" target="_blank" rel="noopener noreferrer"> 
+      <i class="fab fa-orcid"></i> 
+    </a>
+
   </div>
   <!-- .sidebar-bottom -->
 </aside>

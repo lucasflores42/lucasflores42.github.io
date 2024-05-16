@@ -1,20 +1,20 @@
 #  The contact options.
 
-- type: github
-  icon: /assets/svgs/brands/github.svg
-  url: 'https://github.com/lucasflores42'
+#- type: github
+#  icon: /assets/svgs/brands/github.svg
+#  url: 'https://github.com/lucasflores42'
 
-- type: email
-  icon: /assets/svgs/solid/envelope.svg
+#- type: email
+#  icon: /assets/svgs/solid/envelope.svg
   #url: ''
 
-- type: google-scholar
-  icon: /assets/svgs/brands/google-scholar.svg
-  url:  'https://scholar.google.com/citations?user=E4N3xHQAAAAJ&hl=pt-BR'
+#- type: google-scholar
+#  icon: /assets/svgs/brands/google-scholar.svg
+#  url:  'https://scholar.google.com/citations?user=E4N3xHQAAAAJ&hl=pt-BR'
 
-- type: orcid
-  icon: /assets/svgs/brands/orcid.svg
-  url: 'https://orcid.org/0000-0002-9638-8585'
+#- type: orcid
+#  icon: /assets/svgs/brands/orcid.svg
+#  url: 'https://orcid.org/0000-0002-9638-8585'
 
 # Uncomment and complete the url below to enable more contact options
 #
