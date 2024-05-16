@@ -5,7 +5,7 @@ journal: "Journal of Theoretical Biology 524, 110737"
 date: 2021-09-07 11:33:00 +0800
 categories: []
 tags: [publication]
-pin: true
+pin: false
 math: true
 mermaid: true
 
