@@ -20,7 +20,7 @@ toc: true
 
 **Physics B.Sc.**  *2017 - 2021*
 
-Universidade Federal do Rio Grande do Sul, UFRGS, Brasil
+*Universidade Federal do Rio Grande do Sul, UFRGS, Brasil*
 
 
 
