@@ -14,9 +14,9 @@ toc: true
 - Advisor: Mendeli H. Vainstein.
 - Co-advisor: Heitor C. M. Fernandes.
 
-  - *Internship at Centre For Theoretical Physics (Advisor: Matteo Marsili)*
+  - *Internship at International Centre For Theoretical Physics (Advisor: Matteo Marsili)*
   - *Internship at Max Planck Institute of Evolutionary Biology (Advisor: Arne Traulsen)*
-
+  - *Visit at Teesside University (Host: The Anh Han)*
 
 **Physics B.Sc.**  *2017 - 2021*
 
@@ -38,6 +38,9 @@ Universidade Federal do Rio Grande do Sul, UFRGS, Brasil
 
 ## Publications
 ---
+- [**Evolution of commitment in the spatial Public Goods Game through institutional incentives**](/files/papers/commitment/commitment.pdf){:target="_blank"}
+  *LS Flores, TA Han*,
+  *Applied Mathematics and Computation 473, 128646 (2024)*
 
 - [**Heterogeneous contributions can jeopardize cooperation in the Public Goods Game**](/files/papers/heterogeneous/PhysRevE.108.024111.pdf){:target="_blank"}
   *LS Flores, MH Vainstein, HCM Fernandes, MA Amaral*,
