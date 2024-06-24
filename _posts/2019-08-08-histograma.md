@@ -10,8 +10,8 @@ mermaid: true
 hidden: true
 ---
 
-[Download file](/files/scripts/data_analysis/histograma.awk){:download}
 
+<hr>
 
 Code used to separate some parameter values from the complete file.
 
@@ -46,3 +46,4 @@ END{
  #printf("\n");
 }
 ```
+[Download file](/files/scripts/data_analysis/histograma.awk){:download}

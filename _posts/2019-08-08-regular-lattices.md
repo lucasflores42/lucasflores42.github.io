@@ -10,8 +10,8 @@ mermaid: true
 hidden: true
 ---
 
-[Download file](/files/scripts/regular_lattices.h){:download}
 
+<hr>
 
 Code with most regular lattices defined to be used in a main.c code.
 
@@ -454,3 +454,4 @@ void moore_lattice (int **viz, int L)
 	return;			
 }
 ```
+[Download file](/files/scripts/regular_lattices.h){:download}

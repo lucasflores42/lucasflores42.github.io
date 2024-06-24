@@ -9,9 +9,9 @@ math: true
 mermaid: true
 hidden: true
 ---
-[Download file](/files/scripts/data_analysis/estabilidade.gp){:download}
 
 
+<hr>
 
 Code to plot in gnuplot every .txt time dynamics file specified in FILES.
 Useful to check stability.
@@ -32,3 +32,4 @@ plot for [data in FILES] data u 1:2 w l title data
 
 pause -1
 ```
+[Download file](/files/scripts/data_analysis/estabilidade.gp){:download}

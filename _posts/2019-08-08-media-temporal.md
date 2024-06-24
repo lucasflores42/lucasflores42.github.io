@@ -10,8 +10,8 @@ mermaid: true
 hidden: true
 ---
 
-[Download file](/files/scripts/data_analysis/media_temporal_equilibrio.awk){:download}
 
+<hr>
 
 Code used in calcular_media.sh to take the equilibrium densities from every sample.
 
@@ -59,3 +59,4 @@ END {
 
 
 ```
+[Download file](/files/scripts/data_analysis/media_temporal_equilibrio.awk){:download}

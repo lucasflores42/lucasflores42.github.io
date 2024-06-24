@@ -10,7 +10,7 @@ mermaid: true
 hidden: true
 ---
 
-[Download file](/files/scripts/data_analysis/calcular_media_lucas.sh){:download}
+<hr>
 
 
 Code to apply media_temporal.awk in all files, merging every equilibrium density from every sample in the same file. 
@@ -43,3 +43,6 @@ awk -f media_temporal.awk $name
 
 done
 ```
+
+
+[Download file](/files/scripts/data_analysis/calcular_media_lucas.sh){:download}

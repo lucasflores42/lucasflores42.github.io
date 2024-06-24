@@ -10,9 +10,9 @@ mermaid: true
 hidden: true
 ---
 
-[Download file](/files/scripts/egt.jl){:download}
 
 
+<hr>
 
 Main code to run simulations about evolutionary game theory.
 
@@ -420,3 +420,4 @@ end
 # ╟─6a6e6257-8ec7-4765-8131-7a600c4bd2e0
 
 ```
+[Download file](/files/scripts/egt.jl){:download}
