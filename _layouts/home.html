@@ -5,39 +5,31 @@ refactor: true
 
 {% include lang.html %}
 
-
-{% assign pinned = site.posts | where: 'pin', 'true' %}
-{% assign default = site.posts | where_exp: 'item', 'item.pin != true and item.hidden != true' %}
+{% assign pinned = site.posts | where: 'pin', true %}
+{% assign default_posts = site.posts | where_exp: 'post', 'post.pin != true and post.hidden != true' %}
 
 {% assign posts = '' | split: '' %}
 
 <!-- Get pinned posts -->
-
 {% assign offset = paginator.page | minus: 1 | times: paginator.per_page %}
 {% assign pinned_num = pinned.size | minus: offset %}
 
 {% if pinned_num > 0 %}
-  {% for i in (offset..pinned.size) limit: pinned_num %}
-    {% assign posts = posts | push: pinned[i] %}
+  {% for post in pinned limit: pinned_num offset: offset %}
+    {% assign posts = posts | push: post %}
   {% endfor %}
 {% else %}
   {% assign pinned_num = 0 %}
 {% endif %}
 
 <!-- Get default posts -->
+{% assign default_start = offset | minus: pinned.size %}
+{% assign default_start = default_start | max: 0 %}
+{% assign default_end = default_start | plus: paginator.per_page | minus: pinned_num %}
 
-{% assign default_beg = offset | minus: pinned.size %}
-
-{% if default_beg < 0 %}
-  {% assign default_beg = 0 %}
-{% endif %}
-
-{% assign default_num = paginator.posts | size | minus: pinned_num %}
-{% assign default_end = default_beg | plus: default_num | minus: 1 %}
-
-{% if default_num > 0 %}
-  {% for i in (default_beg..default_end) %}
-    {% assign posts = posts | push: default[i] %}
+{% if default_end > 0 %}
+  {% for post in default_posts offset: default_start limit: default_end %}
+    {% assign posts = posts | push: post %}
   {% endfor %}
 {% endif %}
 
@@ -53,16 +45,12 @@ refactor: true
             {% assign src = post.img_path | append: '/' | append: src | replace: '//', '/' %}
           {% endunless %}
 
-          {% assign alt = post.image.alt | xml_escape | default: 'Preview Image' %}
+          {% assign alt = post.image.alt | default: 'Preview Image' %}
 
-          {% assign lqip = null %}
-
-          {% if post.image.lqip %}
-            {% capture lqip %}lqip="{{ post.image.lqip }}"{% endcapture %}
-          {% endif %}
+          {% assign lqip = post.image.lqip %}
 
           <div class="col-md-5">
-            <img src="{{ src }}" alt="{{ alt }}" {{ lqip }}>
+            <img src="{{ src }}" alt="{{ alt }}" {% if lqip %}lqip="{{ lqip }}"{% endif %}>
           </div>
 
           {% assign card_body_col = '7' %}
@@ -75,7 +63,7 @@ refactor: true
             <div class="card-text content mt-0 mb-3">
               <p>
                 {% include no-linenos.html content=post.content %}
-                {{ content | markdownify | strip_html | truncate: 200 | escape }}
+                {{ post.content | markdownify | strip_html | truncate: 200 | escape }}
               </p>
             </div>
 
@@ -90,8 +78,7 @@ refactor: true
                   <i class="far fa-folder-open fa-fw me-1"></i>
                   <span class="categories">
                     {% for category in post.categories %}
-                      {{ category }}
-                      {%- unless forloop.last -%},{%- endunless -%}
+                      {{ category }}{% unless forloop.last %},{% endunless %}
                     {% endfor %}
                   </span>
                 {% endif %}
