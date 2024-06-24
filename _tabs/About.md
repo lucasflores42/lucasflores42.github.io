@@ -28,8 +28,8 @@ toc: true
 ---
 - **Encontro Nacional de Física Estatística 2021 (Encontro)**
 - **XXXIII Salão de Iniciação Científica 2021 (Congresso)**
-- **XXXII Salão de Iniciação Científica. 2020 (Congresso)**
-- **XXXI Salão de Iniciação Científica. 2019 (Congresso)**
+- **XXXII Salão de Iniciação Científica 2020 (Congresso)**
+- **XXXI Salão de Iniciação Científica 2019 (Congresso)**
 
 ## Reviews
 ---
