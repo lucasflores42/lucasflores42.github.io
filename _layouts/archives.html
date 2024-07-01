@@ -3,51 +3,47 @@ layout: page
 # The Archives of posts.
 ---
 
-{% include lang.html %}
-
-{% assign df_strftime_m = site.data.locales[lang].df.archives.strftime | default: '/ %m' %}
-{% assign df_dayjs_m = site.data.locales[lang].df.archives.dayjs | default: '/ MM' %}
-
-
 <style>
   #archives a strong {
-        font-weight: normal; /* Adjust the font weight */
+    font-weight: normal; /* Adjust the font weight */
   }
 </style>
 
 <div id="archives" class="pl-xl-3">
-  {% for post in site.posts %}
-    {% if post.tags contains 'publication' %}
-      {% assign skip_post = false %}
-    {% else %}
-      {% assign skip_post = true %}
-    {% endif %}
 
-    {% unless skip_post %}
-      {% assign cur_year = post.date | date: '%Y' %}
+  <time class="year lead d-block">2023</time>
+  <ul class="list-unstyled">
+    <li>
+      <span class="date day">07</span>
+      <span class="date month small text-muted ms-1"> Aug</span>
+      <a href="/files/papers/heterogeneous/PhysRevE.108.024111.pdf" target="_blank">
+        <strong>Heterogeneous contributions can jeopardize cooperation in the Public Goods Game</strong>
+      </a>
+    </li>
+  </ul>
 
-      {% if cur_year != last_year %}
-        {% unless forloop.first %}</ul>{% endunless %}
+  <time class="year lead d-block">2022</time>
+  <ul class="list-unstyled">
+    <li>
+      <span class="date day">01</span>
+      <span class="date month small text-muted ms-1"> Nov</span>
+      <a href="/files/papers//lattices/1-s2.0-S0960077922009237-main.pdf" target="_blank">
+        <strong>Cooperation in regular lattices</strong>
+      </a>
+    </li>
+  </ul>
 
-        <time class="year lead d-block">{{ cur_year }}</time>
-        {{ '<ul class="list-unstyled">' }}
+  <time class="year lead d-block">2021</time>
+  <ul class="list-unstyled">
+    <li>
+      <span class="date day">07</span>
+      <span class="date month small text-muted ms-1"> Sep</span>
+      <a href="/files/papers/symbiotic/1-s2.0-S0022519321001594-main.pdf" target="_blank">
+        <strong>Symbiotic behaviour in the public goods game with altruistic punishment</strong>
+      </a>
+    </li>
+  </ul>
 
-        {% assign last_year = cur_year %}
-      {% endif %}
 
-      <li>
-        {% assign ts = post.date | date: '%s' %}
-        <span class="date day" data-ts="{{ ts }}" data-df="DD">{{ post.date | date: '%d' }}</span>
-        <span class="date month small text-muted ms-1" data-ts="{{ ts }}" data-df="{{ df_dayjs_m }}">
-          {{ post.date | date: df_strftime_m }}
-        </span>
 
-        <a href="{{ post.url | relative_url }}">
-          <strong>{{ post.title }}</strong>
-        </a>
-      </li>
-
-      {% if forloop.last %}</ul>{% endif %}
-    {% endunless %}
-  {% endfor %}
 </div>
