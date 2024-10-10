@@ -1,5 +1,5 @@
 ---
-title: Random Regular lattices
+title: Random Regular lattices (work in progress)
 #author: cotes
 date: 2019-08-08 11:33:00 +0800
 categories: [Evolutionary Game Theory, lattices]
