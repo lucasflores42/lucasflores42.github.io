@@ -8,67 +8,86 @@
 #usar uma vez dentro do calcular_media.sh para juntar as evoluçoes em um mesmo arquivo
 #usar denovo nesse novo arquivo com todas evoluçoes para tirar media
 
-BEGIN{
-i=1;
-parametro1_inicial = 0;
-parametro1_final = 99999;
-parametro1_var = 1;
-
-a = 0.0
-parametro2_inicial = a;
-parametro2_final = a; # tem que botar uma variaçao a mais do que o valor maximo (?)
-parametro2_var = 0.1;
-
-b = 0.0
-parametro3_inicial = b;
-parametro3_final = b;
-parametro3_var = 1.0;
-
+BEGIN {
+count1 = 0;
+count2 = 0;
+count3 = 0;
 }
 
 {
-# If not a comment, read record: 
- #if ($1 !~ /#/)
-    #{
+	parametro1 = sprintf("%.3f", $1);
+	parametro2 = sprintf("%.3f", $2);
+	parametro3 = sprintf("%d", $3);
 
-	parametro1 = $1 + 0;
-    	parametro2 = 0 + 0;  #quando usar em evoluçao temporal mudar esse valor para zero
-    	parametro3 = 0 + 0;
 	for(j=1;j<=NF;j++)
 	{
 		media[parametro1,parametro2,parametro3,j] += $j; 
-		
 	}   		
 	imax[parametro1,parametro2,parametro3] += 1;		
+	#printf "%f %f %f %d\n",parametro1,parametro2,parametro3, imax[parametro1,parametro2,parametro3]
 
+	m1[parametro1,parametro2,parametro3] += $7;
+	m2[parametro1,parametro2,parametro3] += $7*$7; 	
 
-	desvio1[parametro1,parametro2,parametro3] += $2;
-	desvio2[parametro1,parametro2,parametro3] += $2*$2; 	
+	#-------------------------------------------------------------
 	
+	
+    if (!(parametro1 in seen_parametro1)) 
+	{
+        parametro1_array[count1] = parametro1;
+        seen_parametro1[parametro1] = 1;  # Mark parametro1 as seen
+        count1++;
+    }
+
+	if (!(parametro2 in seen_parametro2)) 
+	{
+        parametro2_array[count2] = parametro2;
+        seen_parametro2[parametro2] = 1;  # Mark parametro2 as seen
+        count2++;
+    }
+	if (!(parametro3 in seen_parametro3)) 
+	{
+        parametro3_array[count3] = parametro3;
+        seen_parametro3[parametro3] = 1;  # Mark parametro3 as seen
+        count3++;
+    }
+
+
 }
+
 END {
 
-	for(i=parametro1_inicial;i<=parametro1_final;i=i+parametro1_var) 
+	for (i = 0; i < count1; i++)
 	{  
-		for(k=parametro2_inicial;k<=parametro2_final;k=k+parametro2_var) 
-		{
-			for(w=parametro3_inicial;w<=parametro3_final;w=w+parametro3_var) 
-			{ 
-				a=imax[i,k,w];
-				desvio = sqrt( (desvio2[i,k,w] - (desvio1[i,k,w]*desvio1[i,k,w])/a)/a );
-				
-			   	for(j=1;j<=NF;j++)
-				{
-					media[i,k,w,j] = media[i,k,w,j]/a
-					printf "%f ",media[i,k,w,j]
-				}  	
-				printf "%f ",desvio
-				printf "%d \n",a      
-			}
-		}
-        #printf("\n");
-	}
+		parametro1 = parametro1_array[i];
+		#printf "Accessing parametro1_array[%d]: %f\n", k, parametro1_array[i];
 
+		for (k = 0; k < count2	; k++)
+		{
+			parametro2 = parametro2_array[k];
+			#printf "Accessing parametro2_array[%d]: %f\n", k, parametro2_array[k];
+
+			for (w = 0; w < count3; w++)
+			{ 
+				parametro3 = parametro3_array[w];
+				#printf "Accessing parametro3_array[%d]: %f\n", w, parametro3_array[w];
+
+				a=imax[parametro1,parametro2,parametro3];
+				#printf "%f %f %f %f\n ",parametro1,parametro2,parametro3,a
+				desvio = sqrt((m2[parametro1,parametro2,parametro3] - (m1[parametro1,parametro2,parametro3]**2)/a)/a );
+
+				for(j=1;j<=NF;j++)
+				{
+					printf "%f ", media[parametro1,parametro2,parametro3,j]/a
+				}  
+				printf "%f ",desvio
+				printf "%d \n",a  
+				  
+			}
+			printf "\n"   # spaces for heatmap2.gp
+		}
+			#printf "\n"   # spaces for heatmap2.gp
+	}
 }
 
 

@@ -14,7 +14,7 @@ hidden: true
 <hr>
 
 Code to plot in gnuplot every .txt time dynamics file specified in FILES.
-Useful to check stability.
+Useful to check stability time.
 
 ```bash
 #set terminal postscript eps enhanced color

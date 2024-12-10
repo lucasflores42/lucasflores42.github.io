@@ -1,66 +1,89 @@
 # Comments:
 #
-# Tira a media de dados com 2 parametros que estão no mesmo arquivo e os parametros iguais estao em sequencia
-# Para botar varias no mesmo arquivo usar calcular_media_lucas.sh
+# Tira a media de dados com ate 3 parametros que estão no mesmo arquivo e os parametros iguais estao em sequencia
 
 # se plotar com virgular escrever no terminal: export LC_NUMERIC="en_US.UTF-8"
 # se tiver que usar menos parametros botar o inicial e final no fixo que ta no arquivo
 
-BEGIN{
-i=1;
-parametro1_inicial = 1.0;
-parametro1_final = 5.0;
-parametro1_var = 0.1;
+#usar uma vez dentro do calcular_media.sh para juntar as evoluçoes em um mesmo arquivo
+#usar denovo nesse novo arquivo com todas evoluçoes para tirar media
 
-a = 0.0
-parametro2_inicial = 0.0;
-parametro2_final = 0.2; # tem que botar uma variaçao a mais do que o valor maximo (?)
-parametro2_var = 0.01;
-
-parametro3_inicial = 0.0;
-parametro3_final = 5.0;
-parametro3_var = 1.0;
-
+BEGIN {
+count1 = 0;
+count2 = 0;
+count3 = 0;
 }
 
 {
-# If not a comment, read record: 
- #if ($1 !~ /#/)
-    #{
+	parametro1 = sprintf("%.3f", $1);
+	parametro2 = sprintf("%.3f", $2);
+	parametro3 = sprintf("%.3f", $3);
 
-	parametro1 = $1 + 0;
-    	parametro2 = $3 + 0;  #quando uasr em evoluçao temporal mudar esse valor
-    	parametro3 = $4 + 0;
-    	
+	for(j=1;j<=NF;j++)
+	{
+		media[parametro1,parametro2,parametro3,j] += $j; 
+	}   		
+	imax[parametro1,parametro2,parametro3] += 1;		
+	#printf "%f %f %f %d\n",parametro1,parametro2,parametro3, imax[parametro1,parametro2,parametro3]
 
-	media[parametro1,parametro2,parametro3] = $13; 
-		
- 		
+	desvio1[parametro1,parametro2,parametro3] += $2;
+	desvio2[parametro1,parametro2,parametro3] += $2*$2; 	
+
+	#-------------------------------------------------------------
 	
+	
+    if (!(parametro1 in seen_parametro1)) 
+	{
+        parametro1_array[count1] = parametro1;
+        seen_parametro1[parametro1] = 1;  # Mark parametro1 as seen
+        count1++;
+    }
+
+	if (!(parametro2 in seen_parametro2)) 
+	{
+        parametro2_array[count2] = parametro2;
+        seen_parametro2[parametro2] = 1;  # Mark parametro2 as seen
+        count2++;
+    }
+	if (!(parametro3 in seen_parametro3)) 
+	{
+        parametro3_array[count3] = parametro3;
+        seen_parametro3[parametro3] = 1;  # Mark parametro3 as seen
+        count3++;
+    }
+
+
 }
+
 END {
 
-	for(i=parametro1_inicial;i<=parametro1_final;i=i+parametro1_var) 
+	
+	for (i = 0; i < count1; i++)
 	{  
-		for(k=parametro2_inicial;k<=parametro2_final;k=k+parametro2_var) 
-		{
-			for(w=parametro3_inicial;w<=parametro3_final;w=w+parametro3_var) 
-			{ 
-				for(z=parametro3_inicial;z<=parametro3_final;z=z+parametro3_var) 
-				{ 
-					if(z!=w)
-					{
-						if(media[i,k,w] <= media[i,k,z]){media[i,k,w]=0.;}
-						
+		parametro1 = parametro1_array[i];
 		
-					}
-					
-				} 	
-  			if(media[i,k,w]!=0.){printf("%f %f %f \n",i,k,w);}
-			} #printf("\n");
-		} printf("\n");
-	}
+		for (k = 0; k < count2; k++)
+		{
+			parametro2 = parametro2_array[k];
+			max_value = -100;
+			
+			for (w = 0; w < count3; w++)
+			{ 
+				parametro3 = parametro3_array[w];
 
+				a = imax[parametro1,parametro2,parametro3];
+				avg_value = media[parametro1,parametro2,parametro3,4]/a;
+				
+				if (avg_value > max_value) 
+				{ 	
+					#printf "%f %f %f\n", parametro1, parametro2, parametro3
+					max_value = avg_value;
+					final[parametro1,parametro2] = parametro3;
+				}	
+			}
+		printf "%f %f %f\n", parametro1, parametro2, final[parametro1,parametro2]
+		}
+	}
 }
 
 

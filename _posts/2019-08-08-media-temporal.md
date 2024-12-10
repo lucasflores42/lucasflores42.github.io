@@ -13,9 +13,7 @@ hidden: true
 
 <hr>
 
-Code used in calcular_media.sh to take the equilibrium densities from every sample.
-
-
+Code used in <code class="language-plaintext highlighter-rouge">calcular_media.sh</code> to average the equilibrium densities from every sample.
 
 
 

@@ -13,7 +13,7 @@ hidden: true
 
 <hr>
 
-Code to take a file with the parameters and results in columns and transform into a matrix. Need to be used to use the heatmap.gp.
+Code to take a file with the parameters and results in columns and transform into a matrix. Need to be used to use the <code class="language-plaintext highlighter-rouge">heatmap.gp</code>.
 
 
 
