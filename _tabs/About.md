@@ -8,7 +8,7 @@ toc: true
 
 ## Education
 ---
-**Physics PhD**  *2021 - Atual*  
+**Physics PhD**  *2021 - Now*  
 
 *Universidade Federal do Rio Grande do Sul, UFRGS, Brasil*
 - Advisor: Mendeli H. Vainstein.
@@ -33,8 +33,8 @@ toc: true
 
 ## Reviews
 ---
-- **APPLIED MATHEMATICS AND COMPUTATION** *2022-Atual*
-- **JOURNAL OF THEORETICAL BIOLOGY** *2024-Atual*
+- **APPLIED MATHEMATICS AND COMPUTATION** *2022-Now*
+- **JOURNAL OF THEORETICAL BIOLOGY** *2024-Now*
 
 ## Publications
 ---
