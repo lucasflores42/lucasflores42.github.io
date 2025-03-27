@@ -38,6 +38,10 @@ toc: true
 
 ## Publications
 ---
+- [**Seasonal social dilemmas**](/files/papers/seasonal/seasonal.pdf){:target="_blank"}
+  *LS Flores, A Azevedo-Lopes, CM Saad-Roy, A Traulsen*,
+  *npj Complexity (preprint, accepted)*
+
 - [**Evolution of commitment in the spatial Public Goods Game through institutional incentives**](/files/papers/commitment/commitment.pdf){:target="_blank"}
   *LS Flores, TA Han*,
   *Applied Mathematics and Computation 473, 128646 (2024)*
