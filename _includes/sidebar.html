@@ -51,12 +51,12 @@
 
   <!--SIDEBAR BOTTOM ICONS -->
   <div class="sidebar-bottom d-flex flex-wrap align-items-center w-100">
-    {% unless site.theme_mode %}
+    
       <button type="button" class="mode-toggle btn" aria-label="Switch Mode">
         <i class="fas fa-adjust"></i>
       </button>
       <span class="icon-border"></span>
-      {% endunless %}
+      
 
     {% for entry in site.data.contact %}
       {% if entry.type == 'email' %}
