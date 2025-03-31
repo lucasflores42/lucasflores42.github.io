@@ -15,7 +15,7 @@ hidden: true
 
 Code to take a file with the parameters and results in columns and transform into a matrix. Need to be used to use the <code class="language-plaintext highlighter-rouge">heatmap.gp</code>.
 
-
+[Download file](/files/scripts/data_analysis/transformar_em_matriz.awk){:download}
 
 
 
@@ -62,4 +62,3 @@ END{
  printf("\n");
 }
 ```
-[Download file](/files/scripts/data_analysis/transformar_em_matriz.awk){:download}

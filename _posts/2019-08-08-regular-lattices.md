@@ -15,6 +15,7 @@ hidden: true
 
 Code with most regular lattices defined to be used in a main.c code.
 
+[Download file](/files/scripts/regular_lattices.h){:download}
 
 
 
@@ -37,7 +38,10 @@ Code with most regular lattices defined to be used in a main.c code.
 ***                                                 		  ***
 ********************************************************************/
 ```
+
+## 1D lattice
 ```c
+
 
 /********************************************************************
 ***                      1D lattice                               ***
@@ -63,6 +67,8 @@ void unidimensional_lattice (int **viz, int L)
 	return;		
 }
 ```
+
+## Von Neumann lattice
 ```c
 /********************************************************************
 ***                     Square von Neumann                        ***
@@ -95,6 +101,8 @@ void square_lattice (int **viz, int L)
 	return;		
 }
 ```
+
+## Cubic lattice
 ```c
 /********************************************************************
 ***                      cubic lattice                            ***
@@ -134,6 +142,8 @@ void cubic_lattice (int **viz, int L)
 	return;		
 }
 ```
+
+## Hypercubic lattice
 ```c
 /********************************************************************
 ***                   	   4D hypercubic    		            ***
@@ -179,6 +189,7 @@ void hypercubic_lattice (int **viz, int L)
 	return;		
 }
 ```
+## Kagome Lattice
 ```c
 /********************************************************************
 ***                     kagome lattice                            ***
@@ -258,6 +269,7 @@ void kagome_lattice (int **viz, int L)
 	return;		
 }
 ```
+## Honeycomb lattice
 ```c
 /********************************************************************
 ***                     honeycomb lattice                         ***
@@ -322,6 +334,7 @@ void honeycomb_lattice (int **viz, int L)
 	
 }
 ```
+## Triangular lattice
 ```c
 /********************************************************************
 ***                   triangular lattice                          ***
@@ -381,6 +394,7 @@ void triangular_lattice (int **viz, int L)
 	return;			
 }
 ```
+## Moore lattice
 ```c
 /********************************************************************
 ***                        square Moore                           ***
@@ -454,4 +468,3 @@ void moore_lattice (int **viz, int L)
 	return;			
 }
 ```
-[Download file](/files/scripts/regular_lattices.h){:download}

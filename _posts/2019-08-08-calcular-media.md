@@ -23,6 +23,8 @@ For example, <code class="language-plaintext highlighter-rouge">square_r1.700000
 Run with <code class="language-plaintext highlighter-rouge">./calcular_media.awk > file</code>.
 
 
+[Download file](/files/scripts/data_analysis/calcular_media_lucas.sh){:download}
+
 
 ```awk
 # coloca num mesmo arquivo varias densidades no equilibrio de diferentes arquivos atraves do media_temporal_lucas
@@ -55,5 +57,3 @@ done
 
 ```
 
-
-[Download file](/files/scripts/data_analysis/calcular_media_lucas.sh){:download}

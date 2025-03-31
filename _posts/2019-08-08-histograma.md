@@ -15,7 +15,7 @@ hidden: true
 
 Code used to separate some parameter values from the complete file.
 
-
+[Download file](/files/scripts/data_analysis/histograma.awk){:download}
 
 ```awk
 BEGIN{
@@ -46,4 +46,3 @@ END{
  #printf("\n");
 }
 ```
-[Download file](/files/scripts/data_analysis/histograma.awk){:download}

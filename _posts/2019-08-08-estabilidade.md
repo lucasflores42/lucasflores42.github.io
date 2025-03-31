@@ -16,6 +16,8 @@ hidden: true
 Code to plot in gnuplot every .txt time dynamics file specified in FILES.
 Useful to check stability time.
 
+[Download file](/files/scripts/data_analysis/estabilidade.gp){:download}
+
 ```bash
 #set terminal postscript eps enhanced color
 #set output "${name1}_estabilidade.eps"
@@ -32,4 +34,3 @@ plot for [data in FILES] data u 1:2 w l title data
 
 pause -1
 ```
-[Download file](/files/scripts/data_analysis/estabilidade.gp){:download}

@@ -15,7 +15,7 @@ hidden: true
 
 Code used in <code class="language-plaintext highlighter-rouge">calcular_media.sh</code> to average the equilibrium densities from every sample.
 
-
+[Download file](/files/scripts/data_analysis/media_temporal_equilibrio.awk){:download}
 
 
 ```awk
@@ -57,4 +57,3 @@ END {
 
 
 ```
-[Download file](/files/scripts/data_analysis/media_temporal_equilibrio.awk){:download}
