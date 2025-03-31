@@ -12,13 +12,10 @@ hidden: true
 
 <hr>
 
+## Packages
 
 ```julia
 
-
-
-using Markdown
-using InteractiveUtils
 
 #= -----------------------------------------------------------------------------------------------
 											Packages
@@ -33,7 +30,12 @@ using OffsetArrays, StructArrays, PlutoUI, Printf, DelimitedFiles, Statistics , 
 									Evolutionary Game Theory
 ----------------------------------------------------------------------------------------------- =#
 
+```
+## Initialization
 
+### Define players
+
+```julia
 
 #= -----------------------------------------------------------------------------------------------
 										Initialization
@@ -45,15 +47,16 @@ using OffsetArrays, StructArrays, PlutoUI, Printf, DelimitedFiles, Statistics , 
 ----------------------------------------------------------------------------------------------- =#
 
 mutable struct Players
-	node::Int64
-	layer::Int64
-	contribution::Int64
+	index::Int64
+    strategy::Int64
+    contribution::Float64
 	payoff::Float64
-	commitment::Int64
-	formed::Int64
-	notformed::Int64
 end
 
+
+```
+### Initialize players
+```julia
 #= -----------------------------------------------------------------------------------------------
 										Initialize players
 ----------------------------------------------------------------------------------------------- =#
@@ -74,7 +77,9 @@ function initialize_players(player)
 	end
 end
 
-
+```
+### Define lattice
+```julia
 #= -----------------------------------------------------------------------------------------------
 									Initialize lattice
 ----------------------------------------------------------------------------------------------- =#
@@ -109,10 +114,16 @@ function initialize_lattice(viz) # square lattice
 end
 
 
-
+```
+## Functions
+```julia
 #= -----------------------------------------------------------------------------------------------
 										Functions
 ----------------------------------------------------------------------------------------------- =#
+
+```
+### Payoff calculation
+```julia
 
 #= -----------------------------------------------------------------------------------------------
 									Payoff calculation
@@ -167,6 +178,9 @@ function payoff_calculation_pgg_focal(player, viz, r, x)
 	end
 end
 
+```
+### Update rule
+```julia
 
 #= -----------------------------------------------------------------------------------------------
 									Strategy adoption
@@ -187,6 +201,10 @@ function update_rule(player, x, y)
 		player[x].contribution = player[y].contribution	
 	end
 end
+
+```
+### Monte Carlo Step
+```julia
 
 #= -----------------------------------------------------------------------------------------------
 											MCS
@@ -211,6 +229,9 @@ function mcs(player, viz, r)
 	end
 end
 
+```
+### Time dynamics
+```julia
 
 #= -----------------------------------------------------------------------------------------------
 										Time Dynamics
@@ -225,6 +246,10 @@ function time_dynamics(player, viz, r, seed)
 
     end
 end
+
+```
+### Main
+```julia
 
 #= -----------------------------------------------------------------------------------------------
 											Main
@@ -250,6 +275,9 @@ function main(n,r)
     end
 end
 
+```
+### Data
+```julia
 #= -----------------------------------------------------------------------------------------------
 											Data
 ----------------------------------------------------------------------------------------------- =#
@@ -279,7 +307,9 @@ function dens(player, t, seed, r)
 end
 
 
-
+```
+## Run
+```julia
 
 #= -----------------------------------------------------------------------------------------------
 											Run
