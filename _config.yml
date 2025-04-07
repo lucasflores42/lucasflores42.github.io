@@ -80,7 +80,7 @@ avatar: "/assets/img/foto.png"
 toc: true
 
 comments:
-  active: giscus # The global switch for posts comments, e.g., 'disqus'.  Keep it empty means disable
+  active: "giscus" # The global switch for posts comments, e.g., 'disqus'.  Keep it empty means disable
   # The active options are as follows:
   giscus:
     repo: "lucasflores42/lucasflores42.github.io" # <gh-username>/<repo>
