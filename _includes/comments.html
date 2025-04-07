@@ -1,5 +1,18 @@
 <!--  The comments switcher -->
 {% if page.comments and site.comments.active %}
-  {% capture path %}comments/{{ site.comments.active }}.html{% endcapture %}
-  {% include {{ path }} %}
+<script src="https://giscus.app/client.js"
+        data-repo="lucasflores42/lucasflores42.github.io"
+        data-repo-id="R_kgDOK6FHCw"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOK6FHC84Co3iC"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="en"
+        crossorigin="anonymous"
+        async>
+</script>
 {% endif %}
