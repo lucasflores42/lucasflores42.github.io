@@ -11,8 +11,8 @@ toc: true
 **Physics PhD**  *2021 - Now*  
 
 *Universidade Federal do Rio Grande do Sul, UFRGS, Brasil*
-- Advisor: Mendeli H. Vainstein.
-- Co-advisor: Heitor C. M. Fernandes.
+- Advisor: Mendeli H. Vainstein
+- Co-advisor: Heitor C. M. Fernandes
 
   - *Internship at International Centre For Theoretical Physics (Advisor: Matteo Marsili)*
   - *Internship at Max Planck Institute of Evolutionary Biology (Advisor: Arne Traulsen)*
@@ -22,7 +22,9 @@ toc: true
 
 *Universidade Federal do Rio Grande do Sul, UFRGS, Brasil*
 
-
+- Scientific initiation *2018-2021*
+  - Advisor: Heitor C. M. Fernandes
+  - Co-advisor: Mendeli H. Vainstein 
 
 ## Events
 ---
