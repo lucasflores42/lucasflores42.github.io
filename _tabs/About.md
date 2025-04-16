@@ -16,13 +16,12 @@ toc: true
 
   - *Internship at International Centre For Theoretical Physics (Advisor: Matteo Marsili)*
   - *Internship at Max Planck Institute of Evolutionary Biology (Advisor: Arne Traulsen)*
-  - *Visit at Teesside University (Host: The Anh Han)*
 
 **Physics B.Sc.**  *2017 - 2021*
 
 *Universidade Federal do Rio Grande do Sul, UFRGS, Brasil*
 
-- Scientific initiation *2018-2021*
+Scientific initiation *2018-2021*
   - Advisor: Heitor C. M. Fernandes
   - Co-advisor: Mendeli H. Vainstein 
 
