@@ -68,7 +68,7 @@ In the first equation, we have to consider that, if in (A,B) A changes from (d,c
 
 
 
-
+[Download file](/files/scripts/julia/pair_approx_lucas.jl){:download}
 
 ```julia
 # C. Hauert, S. György, Game theory and physics, Am. J. Phys. 73, 405 (2005)
