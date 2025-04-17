@@ -13,7 +13,7 @@ hidden: true
 <hr>
 
 <div style="text-align: justify; hyphens: auto;">
-</div>
+
 This approach is widely used and shows good results compared to structured populations simulations(hauert2005), as we will show.
 
 Now, we will focus on the pair of interacting players $p_{A,B}$, and all pairs connecting to A and B. Fig. shows an illustration of that, where x,y,z denotes the three connections of A and u,v,w the connections of B.
@@ -67,7 +67,7 @@ the changes always come from a (d,c) interaction, since we are using imitation. 
   <figcaption>R=1, S=P=0. </figcaption>
 </figure>
 
-
+</div>
 
 # Code
 ---
