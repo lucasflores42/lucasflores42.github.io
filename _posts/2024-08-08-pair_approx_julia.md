@@ -12,7 +12,6 @@ hidden: true
 
 <hr>
 
-<div style="text-align: justify; hyphens: auto;">
 
 This approach is widely used and shows good results compared to structured populations simulations(hauert2005), as we will show.
 
@@ -67,7 +66,7 @@ the changes always come from a (d,c) interaction, since we are using imitation. 
   <figcaption>R=1, S=P=0. </figcaption>
 </figure>
 
-</div>
+
 
 # Code
 ---
