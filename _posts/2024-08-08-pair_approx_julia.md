@@ -7,28 +7,30 @@ tags: [code, julia]
 pin: false
 math: true
 mermaid: true
-hidden: true
+hidden: false
 ---
 
 <hr>
 
 
 
-The next step is to consider pairs of strategies instead of individual ones. This approach is widely used and shows good results compared to structured populations simulations \cite{hauert2005game}, as we will show.
+The next step is to consider pairs of strategies instead of individual ones. This approach is widely used and shows good results compared to structured populations simulations(hauert2005), as we will show.
 
 Now, we will focus on the pair of interacting players $p_{A,B}$, and all pairs connecting to A and B. Fig. shows an illustration of that, where x,y,z denotes the three connections of A and u,v,w the connections of B.
-%
+
 The transition probabilities are given by one strategy of a pair flipping $p_{A,B\rightarrow B,B}$, which is given by
-%
+
+
+
 $$
 \begin{align}
 p_{A,B\rightarrow B,B} = \sum_{x,y,z}\sum_{u,v,w} f(P_B - P_A) \times \frac{p_{x,A}\, p_{y,A}\,p_{z,A}\,p_{A,B}\,p_{u,B}\,p_{v,B}\,p_{w,B}}{p_A^3\,p_B^3}
 \end{align}
 $$
-%
-where $f(P_B - P_A)$ is the probability of strategy adoption, and $p_{i,A}$ is the probability that the pair (i,A) have the strategy of A and the strategy of i given by the sum.
-%
-With the sums, we consider all possible strategy pairs in all three directions of connections of each player interacting.
+
+
+
+where $f(P_B - P_A)$ is the probability of strategy adoption, and $p_{i,A}$ is the probability that the pair (i,A) have the strategy of A and the strategy of i given by the sum. With the sums, we consider all possible strategy pairs in all three directions of connections of each player interacting.
 
 <figure>
   <img src="/assets/img/pairs.png" alt="Alt text">
@@ -37,7 +39,8 @@ With the sums, we consider all possible strategy pairs in all three directions o
 
 
 In the end, we need two differential equations, that are given by
-%
+
+
 $$
 \begin{align}
 \dot{p}_{c,c} = \sum_{x,y,z} \, [n_c(x,y,z)+1]\,p_{d,x}\,p_{d,y}\,p_{d,z} \sum_{u,v,w} p_{c,u}\,p_{c,v}\,p_{c,w}\,f(P_c(u,v,w)-P_d(x,y,z)) \\ 
@@ -51,16 +54,13 @@ $$
 - \sum_{x,y,z} \, [2 - n_c(x,y,z)]\, p_{c,x}\,p_{c,y}\,p_{c,z} \sum_{u,v,w} p_{d,u}\,p_{d,v}\,p_{d,w}\, f(P_d(u,v,w)-P_c(x,y,z))
 \end{align}
 $$
-%
-the changes always come from a (d,c) interaction, since we are using imitation. 
-%
-In both equations, the first term is related to a defector changing to cooperation, and the second term a cooperator changing to defection.
-%
-In the first equation, we have to consider that, if in (A,B) A changes from (d,c) to (c,c), we get $1+n_c$ new (c,c) connections. And also the negative part where B changes from (d,c) becomes (d,d), where we lose $n_c$ pairs (c,c).
+
+
+the changes always come from a (d,c) interaction, since we are using imitation. In both equations, the first term is related to a defector changing to cooperation, and the second term a cooperator changing to defection. In the first equation, we have to consider that, if in (A,B) A changes from (d,c) to (c,c), we get $1+n_c$ new (c,c) connections. And also the negative part where B changes from (d,c) becomes (d,d), where we lose $n_c$ pairs (c,c).
 
 
 <figure>
-  <img src="/assets/img/pair_approx.png" alt="Alt text">
+  <img src="/assets/img/pair_approx.png" alt="Alt text" style="width: 300px; height: auto;">
   <figcaption>R=1, S=P=0. </figcaption>
 </figure>
 
