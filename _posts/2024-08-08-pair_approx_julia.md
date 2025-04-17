@@ -7,14 +7,14 @@ tags: [code, julia]
 pin: false
 math: true
 mermaid: true
-hidden: false
+hidden: true
 ---
 
 <hr>
 
 
 
-The next step is to consider pairs of strategies instead of individual ones. This approach is widely used and shows good results compared to structured populations simulations(hauert2005), as we will show.
+This approach is widely used and shows good results compared to structured populations simulations(hauert2005), as we will show.
 
 Now, we will focus on the pair of interacting players $p_{A,B}$, and all pairs connecting to A and B. Fig. shows an illustration of that, where x,y,z denotes the three connections of A and u,v,w the connections of B.
 
@@ -59,14 +59,14 @@ $$
 the changes always come from a (d,c) interaction, since we are using imitation. In both equations, the first term is related to a defector changing to cooperation, and the second term a cooperator changing to defection. In the first equation, we have to consider that, if in (A,B) A changes from (d,c) to (c,c), we get $1+n_c$ new (c,c) connections. And also the negative part where B changes from (d,c) becomes (d,d), where we lose $n_c$ pairs (c,c).
 
 
-<figure>
-  <img src="/assets/img/pair_approx.png" alt="Alt text" style="width: 300px; height: auto;">
+<figure style="margin: 0 auto; text-align: center;">
+  <img src="/assets/img/pair_approx.png" alt="Alt text" style="width: 500px; height: auto;">
   <figcaption>R=1, S=P=0. </figcaption>
 </figure>
 
 
 
-
+# Code
 
 [Download file](/files/scripts/julia/pair_approx_lucas.jl){:download}
 
