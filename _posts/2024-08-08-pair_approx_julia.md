@@ -37,9 +37,9 @@ $$
 ```julia
 # C. Hauert, S. György, Game theory and physics, Am. J. Phys. 73, 405 (2005)
 
-#	      x        u
-#	      |        |
-#  	      |        |
+#         x        u
+#         |        |
+#         |        |
 # y ----- A ------ B ------ v 
 #         |        |
 #         |        |
