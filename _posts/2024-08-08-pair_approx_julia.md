@@ -36,6 +36,7 @@ where $f(P_B - P_A)$ is the probability of strategy adoption, and $p_{i,A}$ is t
   <figcaption>Illustration of the notation for the neighbors of the pair (A,B). Note also that, if one strategy changes, not only the (A,B) pair changes. If A copies the strategy of B, we get $+2(d,c)-2(d,c)$, and $+2(c,c)$. If B copies the strategy of A, we get $-3(c,c)$ and $-1(d,c)+3(d,c)$.  </figcaption>
 </figure>
 
+---
 
 
 
