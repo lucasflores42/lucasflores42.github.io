@@ -31,7 +31,7 @@ $$
 
 where $f(P_B - P_A)$ is the probability of strategy adoption, and $p_{i,A}$ is the probability that the pair (i,A) have the strategy of A and the strategy of i given by the sum. With the sums, we consider all possible strategy pairs in all three directions of connections of each player interacting.
 
-<figure style="margin: 2rem auto; text-align: justify;">
+<figure style="margin: 2rem auto; text-align: center;">
   <img src="/assets/img/pairs.png" alt="Alt text" style="width: 350px; height: auto;">
   <figcaption>Illustration of the notation for the neighbors of the pair (A,B). Note also that, if one strategy changes, not only the (A,B) pair changes. If A copies the strategy of B, we get $+2(d,c)-2(d,c)$, and $+2(c,c)$. If B copies the strategy of A, we get $-3(c,c)$ and $-1(d,c)+3(d,c)$.  </figcaption>
 </figure>
@@ -61,7 +61,7 @@ $$
 the changes always come from a (d,c) interaction, since we are using imitation. In both equations, the first term is related to a defector changing to cooperation, and the second term a cooperator changing to defection. In the first equation, we have to consider that, if in (A,B) A changes from (d,c) to (c,c), we get $1+n_c$ new (c,c) connections. And also the negative part where B changes from (d,c) becomes (d,d), where we lose $n_c$ pairs (c,c).
 
 
-<figure style="margin: 2rem auto; text-align: justify;">
+<figure style="margin: 2rem auto; text-align: center;">
   <img src="/assets/img/pair_approx.png" alt="Alt text" style="width: 450px; height: auto;">
   <figcaption>R=1, S=P=0. </figcaption>
 </figure>
