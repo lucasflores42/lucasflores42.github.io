@@ -2,7 +2,7 @@
 title: Regular lattices
 #author: cotes
 date: 2019-08-08 11:33:00 +0800
-categories: [Evolutionary Game Theory, lattices]
+categories: [Evolutionary Game Theory, C]
 tags: [code, C, lattices]
 pin: false
 math: true
