@@ -1,5 +1,5 @@
 ---
-title: Monte Carlo simulation (julia) 
+title: Monte Carlo simulation 
 #author: cotes
 date: 2024-08-08 11:33:00 +0800
 categories: [Evolutionary Game Theory, Julia]
