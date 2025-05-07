@@ -16,7 +16,6 @@ hidden: true
 
 ```julia
 using OffsetArrays, StructArrays, PlutoUI, Printf, DelimitedFiles, Statistics , Random, Markdown, InteractiveUtils, Graphs, Plots, GraphPlot, Dates
-
 ```
 ## Initialization
 
@@ -169,8 +168,8 @@ function time_dynamics(player, viz, r, seed)
 
     end
 end
-
 ```
+
 ### Main
 ```julia
 function main(n,r)
@@ -192,8 +191,8 @@ function main(n,r)
 
     end
 end
-
 ```
+
 ### Data
 ```julia
 function dens(player, t, seed, r)
@@ -234,7 +233,4 @@ r_range = 3.3 #3.3:0.1:5.0
 for r in r_range
 	main(n,r)
 end
-
-
-
 ```
