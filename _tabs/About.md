@@ -1,6 +1,6 @@
   ---
 # the default layout is 'page'
-layout: cv
+layout: default
 icon: fas fa-info-circle
 order: 3
 toc: true
