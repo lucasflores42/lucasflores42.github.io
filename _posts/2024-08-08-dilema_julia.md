@@ -15,24 +15,7 @@ hidden: true
 ## Packages
 
 ```julia
-
-
-#= 
--------------------------------------------------
-					Packages
--------------------------------------------------
-=#
-
-#import Pkg; Pkg.add(["Plots", "OffsetArrays", "StructArrays", "PlutoUI", "Printf", "DelimitedFiles", "Statistics", "Random", "Markdown", "InteractiveUtils"])
-
 using OffsetArrays, StructArrays, PlutoUI, Printf, DelimitedFiles, Statistics , Random, Markdown, InteractiveUtils, Graphs, Plots, GraphPlot, Dates
-
-
-#= 
--------------------------------------------------
-			Evolutionary Game Theory
-------------------------------------------------- 
-=#
 
 ```
 ## Initialization
@@ -40,38 +23,16 @@ using OffsetArrays, StructArrays, PlutoUI, Printf, DelimitedFiles, Statistics , 
 ### Define players
 
 ```julia
-
-#= 
--------------------------------------------------
-				Initialization
--------------------------------------------------
- =#
-
-
-#= 
--------------------------------------------------
-				Define players
--------------------------------------------------
- =#
-
 mutable struct Players
 	index::Int64
     strategy::Int64
     contribution::Float64
 	payoff::Float64
 end
-
-
 ```
+
 ### Initialize players
 ```julia
-#= 
--------------------------------------------------
-				Initialize players
--------------------------------------------------
- =#
-
-
 function initialize_players(player) 
 	
 	for k in 0:N-1
@@ -86,18 +47,10 @@ function initialize_players(player)
 		end
 	end
 end
-
 ```
+
 ### Define lattice
 ```julia
-#= 
--------------------------------------------------
-				Initialize lattice
-------------------------------------------------- 
-=#
-
-
-
 function initialize_lattice(viz) # square lattice
 	
 	L2 = L*L
@@ -125,27 +78,12 @@ function initialize_lattice(viz) # square lattice
 		end
 	end
 end
-
-
 ```
+
 ## Functions
-```julia
-#= 
--------------------------------------------------
-					Functions
--------------------------------------------------
- =#
 
-```
 ### Payoff calculation
 ```julia
-
-#= 
--------------------------------------------------
-				Payoff calculation
--------------------------------------------------
- =#
-
 function payoff_calculation_pd(player, viz, r, x) 
 
 	player[x].payoff = 0.
@@ -162,10 +100,9 @@ function payoff_calculation_pd(player, viz, r, x)
 
 	for k in 1:G-1
 		player[x].payoff += 
-			payoff_matrix[1+player[x].strategy, 1+player[viz[x,k]].strategy]
+		payoff_matrix[1+player[x].strategy, 1+player[viz[x,k]].strategy]
 	end
 end
-
 
 function payoff_calculation_pgg(player, viz, r, x) 
 	
@@ -180,32 +117,10 @@ function payoff_calculation_pgg(player, viz, r, x)
 		player[x].payoff += r*pool/G - player[x].contribution	
 	end
 end
-
-function payoff_calculation_pgg_focal(player, viz, r, x) 
-	
-	player[x].payoff = 0.
-	
-	for j in 0:0
-		x_aux = viz[x,j]
-		pool = 0
-		for k in 0:G-1	
-			pool += player[viz[x_aux,k]].contribution
-		end
-		player[x].payoff += r*pool/G - player[x].contribution	
-	end
-end
-
 ```
+
 ### Update rule
 ```julia
-
-#= 
--------------------------------------------------
-				Strategy adoption
--------------------------------------------------
- =#
-
-
 function update_rule(player, x, y)
 
 
@@ -220,18 +135,10 @@ function update_rule(player, x, y)
 		player[x].contribution = player[y].contribution	
 	end
 end
-
 ```
+
 ### Monte Carlo Step
 ```julia
-
-#= 
--------------------------------------------------
-					MCS
--------------------------------------------------
- =#
-
-
 function mcs(player, viz, r)
 
 	for i in 0:N-1
@@ -249,23 +156,16 @@ function mcs(player, viz, r)
 		end	
 	end
 end
-
 ```
+
 ### Time dynamics
 ```julia
-
-#= 
--------------------------------------------------
-				Time Dynamics
--------------------------------------------------
- =#
-
 function time_dynamics(player, viz, r, seed)
 
 	for t in 1:tmax
 
         dens(player, t)  
-		mcs(player, viz, r)   	
+	    mcs(player, viz, r)   	
 
     end
 end
@@ -273,13 +173,6 @@ end
 ```
 ### Main
 ```julia
-
-#= 
--------------------------------------------------
-					Main
--------------------------------------------------
- =#
-
 function main(n,r)
 
 	viz = OffsetArray{Int64}(undef, 0:N-1, 0:G-1)
@@ -303,18 +196,11 @@ end
 ```
 ### Data
 ```julia
-#= 
--------------------------------------------------
-					Data
--------------------------------------------------
- =#
 function dens(player, t, seed, r)
    
+	dens_c = sum(player[i,j].strategy for i in 1:N)
 
-        dens_c = sum(player[i,j].strategy for i in 1:N)
-
-        @printf "%d %.5f\n" t dens_c/N 
-
+	@printf "%d %.5f\n" t dens_c/N 
 
 	# -----------------------------------------------------------
 
@@ -329,23 +215,12 @@ function dens(player, t, seed, r)
         end # end the open file
     end
 
-
     save_densities()
 end
-
-
 ```
+
 ## Run
 ```julia
-
-#= 
--------------------------------------------------
-					Run
--------------------------------------------------
- =#
-function run()
-end
-
 const L=30 	# linear population size
 const N=L^2 	# population size
 const tmax=10^2
