@@ -1,4 +1,4 @@
----
+  ---
 # the default layout is 'page'
 layout: cv
 icon: fas fa-info-circle
@@ -41,7 +41,7 @@ Scientific initiation *2018-2021*
 ---
 - [**Seasonal social dilemmas**](/files/papers/seasonal/seasonal.pdf){:target="_blank"}
   *LS Flores, A Azevedo-Lopes, CM Saad-Roy, A Traulsen*,
-  *npj Complexity (preprint, accepted)*
+  *npj Complexity 2, 17 (2025)*
 
 - [**Evolution of commitment in the spatial Public Goods Game through institutional incentives**](/files/papers/commitment/commitment.pdf){:target="_blank"}
   *LS Flores, TA Han*,
