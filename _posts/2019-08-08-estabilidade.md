@@ -16,6 +16,8 @@ hidden: true
 Code to plot in gnuplot every .txt time dynamics file specified in FILES.
 Useful to check stability time.
 
+Run with <code class="language-plaintext highlighter-rouge">gnuplot code.gp</code>.
+
 [Download file](/files/scripts/data_analysis/estabilidade.gp){:download}
 
 ```bash

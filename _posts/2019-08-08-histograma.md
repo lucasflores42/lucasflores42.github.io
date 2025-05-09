@@ -15,6 +15,8 @@ hidden: true
 
 Code used to separate some parameter values from the complete file.
 
+Run with <code class="language-plaintext highlighter-rouge">awk -f code.awk file</code>.
+
 [Download file](/files/scripts/data_analysis/histograma.awk){:download}
 
 ```awk
