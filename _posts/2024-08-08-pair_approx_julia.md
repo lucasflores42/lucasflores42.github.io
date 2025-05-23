@@ -50,7 +50,7 @@ $$
 $$
 \begin{align}
 \dot{p}_{c,d} = \sum_{x,y,z} \, [1 - n_c(x,y,z)]\,p_{d,x}\,p_{d,y}\,p_{d,z} \sum_{u,v,w} p_{c,u}\,p_{c,v}\,p_{c,w}\,f(P_c(u,v,w)-P_d(x,y,z)) \\ 
-- \sum_{x,y,z} \, 2[2 - n_c(x,y,z)]\, p_{c,x}\,p_{c,y}\,p_{c,z} \sum_{u,v,w} p_{d,u}\,p_{d,v}\,p_{d,w}\, f(P_d(u,v,w)-P_c(x,y,z))
+- \sum_{x,y,z} \, [2 - n_c(x,y,z)]\, p_{c,x}\,p_{c,y}\,p_{c,z} \sum_{u,v,w} p_{d,u}\,p_{d,v}\,p_{d,w}\, f(P_d(u,v,w)-P_c(x,y,z))
 \end{align}
 $$
 
@@ -63,7 +63,7 @@ Considering that the pair (A,B) changes from (d,c) to (c,c)
 
 Considering that the pair (A,B) changes from (d,c) to (d,d)
 
-- we lose $n_c$ pairs (c,c) and $2(2-n_c)$ new (d,c) pairs
+- we lose $n_c$ pairs (c,c) and $2-n_c$ new (d,c) pairs
 
 
 
@@ -165,7 +165,7 @@ function calculo_pho(ρ⃗, params)
 							A₂ = p[2,1+x]*p[2,1+y]*p[2,1+z]*p[1,1+u]*p[1,1+v]*p[1,1+w] #ρci  ρdj
 						
 							eq_cc += (nc_xyz+1)*A₁*Wcd - nc_xyz*A₂*Wdc
-							eq_cd += (1-nc_xyz)*A₁*Wcd - 2*(2-nc_xyz)*A₂*Wdc
+							eq_cd += (1-nc_xyz)*A₁*Wcd - (2-nc_xyz)*A₂*Wdc
 
 							#@printf "%d %d %s\n" nc_xyz nc_uvw A₁
 						end
