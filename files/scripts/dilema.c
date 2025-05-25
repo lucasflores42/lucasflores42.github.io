@@ -1,26 +1,3 @@
----
-title: Monte Carlo simulation
-#author: cotes
-date: 2019-08-08 11:33:00 +0800
-categories: [Evolutionary Game Theory, C]
-tags: [code, C]
-pin: false
-math: true
-mermaid: true
-hidden: true
----
-
-<hr>
-
-
-
-Main code to run simulations about evolutionary game theory in C.
-
-[Download file](/files/scripts/dilema.c){:download}
-
-## Packages
-
-```c
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -30,11 +7,7 @@ Main code to run simulations about evolutionary game theory in C.
 #include <gsl/gsl_randist.h>
 #include "pointers.h"
 #include "regular_lattices.h"
-```
 
-## Definitions
-
-```c
 //------------------------------------------------------
 
 #define fps 0000.01000000005 // fps^-1
@@ -73,12 +46,6 @@ void set_gsl_rng(void)
 	rand_vec = gsl_rng_alloc (T);
 	gsl_rng_set (rand_vec, rseed);
 }
-```
-
-
-## Initial distributions
-
-```c
 /********************************************************************
 ***                  distribuição dos estados                     ***
 ********************************************************************/		
@@ -93,11 +60,6 @@ void calculo_ci_rand(int strategy[N], int **viz)
 		else {strategy[n] = 0;}
 	}
 }
-```
-
-## Payoff calculation
-
-```c
 /********************************************************************
 ***                          Payoff                               ***
 ********************************************************************/
@@ -169,12 +131,6 @@ void calculo_payoff_pgg ( double *payoff, double r, double gama, double delta, i
 		payoff[0] += (r/G)*nc; 
 	}
 }
-```
-
-
-## Update rule
-
-```c
 /********************************************************************
 ***                         Update rule                           ***
 ********************************************************************/
@@ -193,11 +149,6 @@ void update_rule( int x, int vizinho, int strategy[N], double Px, double Py , in
 		strategy[x] = strategy[vizinho];
 	}
 }
-```
-
-### Monte Carlo Step
-
-```c
 /********************************************************************
 ***                            MCS                                ***
 ********************************************************************/
@@ -224,16 +175,16 @@ void calculo_mcs(double *payoff, int strategy[N], int **viz, double r, double ga
 		
   	}
 }
-```
-
-## Densities calculation
-
-```c
 /********************************************************************
 ***                          Densidades                           ***
 ********************************************************************/
 int calculo_densidades(int strategy[N], double *payoff, int **viz, double r, double gama, double delta, int t, FILE *fp)
 {
+	
+	//long double mediaC=0.;
+	//long double mediaC2=0.;
+	//long double mediaD=0.;
+	//long double mediaD2=0.;
 
 	int k;
 	int ND=0;
@@ -251,29 +202,55 @@ int calculo_densidades(int strategy[N], double *payoff, int **viz, double r, dou
 				fprintf(stderr,"ERRO - tipo de estrategia\n");
 				fflush(stderr);
 		}	
+		/*if(strategy[k] == 1)
+		{
+			mediaC += investimento[k];
+			mediaC2 += investimento[k]*investimento[k];			
+		}
+		if(strategy[k] == 0)
+		{
+			mediaD += investimento[k];
+			mediaD2 += investimento[k]*investimento[k];			
+		}*/
 	}	
+
+ 	/*double media_C = (double)mediaC/(NC);
+	double desvio_C = (double)sqrt((0.0000000001+mediaC2-(mediaC*mediaC)/(NC))/NC);
+
+ 	double media_D = (double)mediaD/(ND);
+	double desvio_D = (double)sqrt((mediaD2-(mediaD*mediaD)/(ND))/ND);
+	
+	if(NC == 0) 
+	{
+		media_C = 0.;
+		desvio_C = 0.;
+	}
+	if(ND == 0) 
+	{
+		media_D = 0.;
+		desvio_D = 0.;
+	}
+
+	calculo_payoff_total(payoff,strategy,viz,r,gama,delta,topologia,investimento);
+	double payoff_total = payoff_total_C + payoff_total_D + payoff_total_resto;
+	*/
 
 	#ifdef densidade_terminal
 	printf("%d %lf %lf\n", t, (double)NC/(N), (double)ND/(N));
 	#endif
 
 	#ifdef densidade_arquivo
-	fprintf(fp,"%d %lf %lf\n", t, (double)NC/(N), (double)ND/(N));		
+	fprintf(fp,"%d %lf %lf %lf %lf %lf\n", t, (double)NC/(N), (double)ND/(N), (double)NP/(N), media_C ,desvio_C);	
 	#endif
 
    // Return 1 if any strategy dominates, 0 otherwise
-   // used to stop simulation in the first scenario
     if (NC == N || ND == N || NP == N) {
-        return 1;  
+        return 1;  // All agents have the same strategy
     } else {
-        return 0;  
+        return 0;  // Mixed strategies
     }
 }
-```
 
-## Main
-
-```c
 /********************************************************************
 ***                          Main                                 ***
 ********************************************************************/
@@ -303,7 +280,7 @@ void main(int argc, char *argv[])
 	fp=fopen(filename,"w"); //abre .dat									       //***
 																			   //***					
 	// --------------------------------------								   //***
-	// specify depending on regular_lattices.h								   //***
+	// especificar dependendo da rede										   //***
 	N = L*L; 																   //***
 	G = 5;								   									   //***
 	viz = create_2d_int_pointer_h(N,G);									       //***
@@ -315,14 +292,14 @@ void main(int argc, char *argv[])
 	calculo_densidades(strategy,payoff,viz,r,gama,delta,0,fp);
 	
 	//-------------------MCS--------------------------------------------------------
-	int t;	
+	int t=0;	
 	for(t=1; t < tmax; t++)
 	{	
 		
 		calculo_mcs(payoff,strategy,viz,r,gama,delta,t);
 		calculo_densidades(strategy,payoff,viz,r,gama,delta,t,fp);
 
-		// stop the simulation if one strategy dominates
+  		/*
 		int stop = calculo_densidades(strategy, payoff, viz, r, gama, delta, t, fp);
 		if (stop == 1) 
 		{
@@ -333,204 +310,10 @@ void main(int argc, char *argv[])
 			} 
 			break;
 		}	
+		*/
 	}//MCS
 
 fclose(fp);
 free_2d_int_pointer(viz,N,G);
 
 } //main
-```
-
-## Other functions
-
-### Gnuplot snapshots
-
-```c
-void snap_gnuplot(int state[N], int topologia[N], double *investimento, int label[N], int t)	
-//    ./a.out | gnuplot
-{
-	// plota de cima pra baixo, esquerda pra direita
-	// gnuplot inverte baixo e cima
-	int i,j;
-	
-	printf("set title \"MCS = %d\" \n",t);
-	printf("set autoscale keepfix\n");
-	printf("set palette model RGB\n");
-	printf("unset border\n");
-	//printf("unset colorbox\n");	
-	printf("unset xtics\n");
-	printf("unset ytics\n");
-	//printf("set palette defined ( 0 \"dark-red\", 0.5 \"light-red\",  1  \"#0000B3\", 2 \"#000057\")\n");
-	printf("set palette defined ( 0 \"red\", 1 \"blue\", 2 \"yellow\")\n");
-	//printf("set palette defined ( 0 \"#a6611a\", 0.5 \"#dfc27d\",  1  \"#80cdc1\", 2 \"#018571\")\n");
-	printf("set cbrange[0:2]\n");
-	printf("set xrange[0:%d]\n",L);
-	printf("set yrange[0:%d]\n",L);
-	printf("set size square\n");
-			
-	printf("plot \"-\" matrix with image\n");
-			
-
-	for(i=0;i<L;i++)
-	{
-		for(j=0;j<L;j++)
-		{
-			printf("%d ",state[j+i*L]);
-		
-		}
-		/*for(j=0;j<L;j++)
-		{
-			printf("%d ",state[j+i*L]);
-		}*/
-		printf("\n");
-	}
-	printf("\n"); 
-	printf("e\n");    printf("pause(%lf)\n",fps);
-}
-```
-
-### Gnuplot gif
-
-```c
-void snap_gif(int state[N], int topologia[N], int t)
-{
-
-	int i,j;
-	
-	for(i=0;i<L;i++)
-	{
-		for(j=0;j<L;j++)
-		{
-			printf("%d ",state[j+i*L]);
-		
-		}
-		/*for(j=0;j<L;j++)
-		{
-		printf("%d ",topologia[j+i*L]);
-		}*/
-		printf("\n");
-	}
-	printf("\n"); 
-
-}
-```
-
-### Hoshen-Kopelman
-
-```c
-void calculo_percolacao( int state[N], int **viz, int label[N])
-{
-	int largest_label = 0;
-	int n,i;
-
-	for(n=0;n<N;n++)
-	{
-		label[n] = state[n]*(n+1);
-	}
-	
-	for(n=0;n<N;n++)
-	{
-		if(state[n]==1)
-		{
-			if(state[viz[n][1]] == 0 && state[viz[n][4]] != 0)
-			{
-				int a = label[n];
-				label[n] = label[viz[n][4]];
-			
-				for(i=0;i<N;i++)
-				{
-					if(label[i]==a)
-					{label[i]=label[n];}
-				}
-			}
-			else if(state[viz[n][1]] != 0 && state[viz[n][4]] == 0)
-			{
-				int a = label[n];
-				label[n] = label[viz[n][1]];
-			
-				for(i=0;i<N;i++)
-				{
-					if(label[i]==a)
-					{label[i]=label[n];}
-				}
-			}
-			else if(state[viz[n][1]] != 0 && state[viz[n][4]] != 0)
-			{
-				int a = label[viz[n][1]];
-				int b = label[n];
-				label[viz[n][1]] = label[viz[n][4]];
-				label[n] = label[viz[n][4]];
-			
-				for(i=0;i<N;i++)
-				{
-					if(label[i]==a || label[i]==b)
-					{label[i]=label[n];}
-				}
-			}
-		}
-	}
-}
-```
-
-### Other Initial distributions
-
-```c
-void calculo_ci_square1(int strategy[N], int **viz)
-{
-	int n;
-	for(n=0; n < N; n++)
-	{	
-		int i,j;
-		j=n%L;
-		i=n/L;
-		//if(j<L/2){strategy[j+i*L] = COOPERATOR; investimento[j+i*L] = 0.5;}
-		//else{strategy[j+i*L] = COOPERATOR; investimento[j+i*L] = 2.0;}
-		strategy[j+i*L] = 0; investimento[j+i*L] = 0.0;
-		//if(j==L/3 || j==2*L/3 || i==L/3 || i==2*L/3){strategy[j+i*L] = COOPERATOR;investimento[j+i*L] = 0.;}
-		if(j>L/3 && j<2*L/3 && i>L/3 && i<2*L/3){strategy[j+i*L] = 1;investimento[j+i*L] = 1.;}
-	}
-}
-void calculo_ci_square2(int strategy[N], int **viz)
-{
-	int n;
-	for(n=0; n < N; n++)
-	{	
-		int i,j;
-		j=n%L;
-		i=n/L;
-		strategy[n] = 0;
-
-		if(j>1*L/5 && j<2*L/5 && i>1*L/5 && i<2*L/5){strategy[j+i*L] = 1;investimento[j+i*L] = 0.55;}
-		
-		if(j>3*L/5 && j<4*L/5 && i>1*L/5 && i<2*L/5)
-		{
-			double temp = gsl_rng_uniform(rand_vec);
-			if(temp < 0.5) {investimento[j+i*L] = 3.25;strategy[j+i*L] = 1;}
-			else{investimento[j+i*L] = 3.25;strategy[j+i*L] = 1;}
-		}
-		if(j>1*L/5 && j<2*L/5 && i>3*L/5 && i<4*L/5)
-		{
-			double temp = gsl_rng_uniform(rand_vec);
-			if(temp < 1./3) {strategy[j+i*L] = 1;investimento[j+i*L] = 0.;}
-			else if(temp < 2./3) {strategy[j+i*L] = 1;investimento[j+i*L] = 2.45;}			
-			else{strategy[j+i*L] = 1;investimento[j+i*L] = 3.25;}
-		}
-		if(j>3*L/5 && j<4*L/5 && i>3*L/5 && i<4*L/5){strategy[j+i*L] = 1;investimento[j+i*L] = 2.45;}
-	
-	}
-}
-void calculo_ci_stripes(int strategy[N], int **viz)
-{
-	int n;
-	for(n=0; n < N; n++)
-	{	
-		int i,j;
-		j=n%L;
-		i=n/L;
-		if(i<L/4)				{strategy[j+i*L] = 0;investimento[j+i*L] = 0;}
-		if(i>=L/4 && i<2*L/4)	{strategy[j+i*L] = 1;investimento[j+i*L] = 0.4;}	
-		if(i>=2*L/4 && i<3*L/4)	{strategy[j+i*L] = 1;investimento[j+i*L] = 0.7;}	
-		if(i>=3*L/4)			{strategy[j+i*L] = 1;investimento[j+i*L] = 0.0;}
-	}
-}
-```
