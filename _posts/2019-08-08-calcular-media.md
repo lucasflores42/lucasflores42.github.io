@@ -13,7 +13,7 @@ hidden: true
 <hr>
 
 
-Code to apply <code class="language-plaintext highlighter-rouge">media_temporal_equilibrio.awk</code>. in all files, merging every equilibrium density from every sample in the same file alogside the parameter values.
+Code to apply <code class="language-plaintext highlighter-rouge">media_temporal_equilibrio.awk</code>. in all files, merging every equilibrium density from every sample in the same file with the parameter values.
 
 My simulation files have the parameter values in it so I can extract them and put as columns in this code.
 For example, <code class="language-plaintext highlighter-rouge">square_r1.700000_g0.000000_d0.200000_seed1673476071.txt</code>.
