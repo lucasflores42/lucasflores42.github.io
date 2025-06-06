@@ -13,9 +13,9 @@ hidden: true
 <hr>
 
 
-In structured populations, finding analytical results is of extreme difficulty. Normally, models of  evolutionary dynamics in lattices resort to Monte Carlo simulations. Pair approximation is one approach to try to replicate them, but via differential equations, without the need to run simulations simulations(hauert2005).
+In structured populations, finding analytical results is extremely difficult. Normally, models of  evolutionary dynamics in lattices resort to Monte Carlo simulations. Pair approximation is one approach to try to replicate them, but via differential equations, without the need to run simulations (hauert2005).
 
-Instead of using as variables the densities of each strategy, we will focus on pairs of interacting players $p_{A,B}$, and all pairs connecting to A and B. The figure below shows an illustration of that, where x,y,z denotes the three connections of A and u,v,w the connections of B.
+We will focus on pairs of interacting players $p_{A,B}$, and all pairs connecting to A and B. The figure below shows an illustration of that, where x,y,z denotes the three connections of A and u,v,w the connections of B.
 
 
 <figure style="margin: 2rem auto; text-align: center;">
