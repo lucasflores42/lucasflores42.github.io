@@ -19,7 +19,7 @@ We will focus on pairs of interacting players $p_{A,B}$, and all pairs connectin
 
 
 <figure style="margin: 2rem auto; text-align: center;">
-  <img src="/assets/img/pairs.png" alt="Alt text" style="width: 350px; height: auto;">
+  <img src="/assets/img/pairs.png" alt="Alt text" style="width: 300px; height: auto;">
   <figcaption>Illustration of the notation for the neighbors of the pair (A,B), where blue stands for cooperators and red for defectors. Note also that, if one strategy changes, not only the (A,B) pair changes. If A copies the strategy of B, we get $+2(d,c)-2(d,c)$, and $+2(c,c)$. If B copies the strategy of A, we get $-3(c,c)$ and $-1(d,c)+3(d,c)$.  </figcaption>
 </figure>
 
