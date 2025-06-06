@@ -50,12 +50,12 @@ $$
 $$
 \begin{align}
 \dot{p}_{c,d} = \sum_{x,y,z} \, [1 - n_c(x,y,z)]\,p_{d,x}\,p_{d,y}\,p_{d,z} \sum_{u,v,w} p_{c,u}\,p_{c,v}\,p_{c,w}\,f(P_c(u,v,w)-P_d(x,y,z)) \\ 
-- \sum_{x,y,z} \, [2 - n_c(x,y,z)]\, p_{c,x}\,p_{c,y}\,p_{c,z} \sum_{u,v,w} p_{d,u}\,p_{d,v}\,p_{d,w}\, f(P_d(u,v,w)-P_c(x,y,z))
+- \sum_{x,y,z} \, [2 - n_c(x,y,z)]\, p_{c,x}\,p_{c,y}\,p_{c,z} \sum_{u,v,w} p_{d,u}\,p_{d,v}\,p_{d,w}\, f(P_d(u,v,w)-P_c(x,y,z)).
 \end{align}
 $$
 
 
-the changes always come from a (d,c) interaction, since we are using imitation. In both equations, the first term is related to a defector changing to cooperation, and the second term a cooperator changing to defection. 
+The changes always come from a (d,c) interaction, since we are using imitation. In both equations, the first term is related to a defector changing to cooperation, and the second term a cooperator changing to defection. 
 
 Considering that the pair (A,B) changes from (d,c) to (c,c)
 
