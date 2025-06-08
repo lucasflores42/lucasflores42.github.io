@@ -1,4 +1,4 @@
-{% if page.comments and site.comments.active %}
+<!-- Your Giscus embed -->
 <script id="giscus-script"
         src="https://giscus.app/client.js"
         data-repo="lucasflores42/lucasflores42.github.io"
@@ -21,30 +21,20 @@ function setGiscusTheme(theme) {
   if (iframe) {
     iframe.contentWindow.postMessage({
       giscus: {
-        setConfig: {
-          theme: theme
-        }
+        setConfig: { theme }
       }
     }, 'https://giscus.app');
   }
 }
 
-function getChirpyTheme() {
-  return document.documentElement.getAttribute('data-theme') || 'dark';
-}
+// Attach event to your theme toggle button
+// Replace '#theme-toggle' below with the actual selector for your button if it's different
+document.querySelector('.fa-adjust').addEventListener('click', function() {
+  const html = document.documentElement;
+  const current = html.getAttribute('data-theme') || 'dark';
+  const next = current === 'dark' ? 'light' : 'dark';
+  html.setAttribute('data-theme', next);
 
-document.addEventListener('DOMContentLoaded', function() {
-  setGiscusTheme(getChirpyTheme());
+  setGiscusTheme(next); // Sync Giscus comments with the new theme
 });
-
-const html = document.documentElement;
-const observer = new MutationObserver((mutations) => {
-  mutations.forEach((mutation) => {
-    if (mutation.attributeName === 'data-theme') {
-      setGiscusTheme(getChirpyTheme());
-    }
-  });
-});
-observer.observe(html, { attributes: true });
 </script>
-{% endif %}
