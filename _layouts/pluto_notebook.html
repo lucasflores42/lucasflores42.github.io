@@ -1,0 +1,32 @@
+{% raw %}
+---
+layout: compress
+---
+
+<!doctype html>
+{% include origin-type.html %}
+{% include lang.html %}
+
+<html lang="{{ site.alt_lang | default: site.lang }}">
+  <head>
+    {% include head.html %}
+    <!-- Optional: Font Awesome if you want icons in sidebar -->
+    <link rel="stylesheet" href="{{ '/assets/css/all.css' | relative_url }}">
+  </head>
+  <body>
+    {% include sidebar.html lang=lang %}
+
+    <div id="main-wrapper" class="d-flex justify-content-center" style="width:100%;">
+      <div class="container-fluid d-flex flex-column" style="min-height:100vh;padding:0;">
+        <div class="row flex-grow-1" style="height:100vh;">
+          <main aria-label="Main Content" class="col-12" style="padding:0;height:100vh;">
+            {{ content }}
+          </main>
+        </div>
+      </div>
+    </div>
+    <div id="mask"></div>
+    {% include js-selector.html %}
+  </body>
+</html>
+{% endraw %}
