@@ -1,42 +1,40 @@
-<!-- Your comments.html -->
-<body>
-  <!-- Your theme toggle button -->
-  <button id="theme-toggle">Toggle Theme</button>
-
-  <!-- Giscus Script -->
-  <script id="giscus-script"
-          src="https://giscus.app/client.js"
-          data-repo="lucasflores42/lucasflores42.github.io"
-          data-repo-id="R_kgDOK6FHCw"
-          data-category="Announcements"
-          data-category-id="DIC_kwDOK6FHC84Co3iC"
-          data-mapping="pathname"
-          data-strict="0"
-          data-reactions-enabled="1"
-          data-emit-metadata="0"
-          data-input-position="bottom"
-          data-theme="light"
-          data-lang="en"
-          crossorigin="anonymous"
-          async>
-  </script>
-
-  <script>
-    function setGiscusTheme(theme) {
-      const iframe = document.querySelector('iframe.giscus-frame');
-      if (!iframe) return;
-      iframe.contentWindow.postMessage({
-        giscus: {
-          setConfig: {
-            theme: theme,
-          }
-        }
-      }, 'https://giscus.app');
-    }
-
-    document.getElementById('theme-toggle').addEventListener('click', function() {
-      const darkMode = document.body.classList.toggle('dark-theme');
-      setGiscusTheme(darkMode ? 'dark' : 'light');
-    });
-  </script>
-</body>
+<!-- Giscus embed here -->
+<script src="https://giscus.app/client.js"
+        data-repo="lucasflores42/lucasflores42.github.io"
+        data-repo-id="R_kgDOK6FHCw"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOK6FHC84Co3iC"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="light"
+        data-lang="en"
+        crossorigin="anonymous"
+        async>
+</script>
+<!-- Place the sync code BELOW this script and after jQuery is loaded -->
+<script>
+function setGiscusTheme(theme) {
+  const iframe = document.querySelector('iframe.giscus-frame');
+  if (!iframe) return;
+  iframe.contentWindow.postMessage(
+    { giscus: { setConfig: { theme } } },
+    'https://giscus.app'
+  );
+}
+window.addEventListener("message", function(event) {
+  if (
+    event.source === window &&
+    event.data &&
+    event.data.direction === "mode-toggle"
+  ) {
+    setGiscusTheme(event.data.message === "dark" ? "dark" : "light");
+  }
+});
+document.addEventListener("DOMContentLoaded", function() {
+  const mode = document.documentElement.getAttribute("data-mode");
+  setGiscusTheme(mode === "dark" ? "dark" : "light");
+});
+</script>
