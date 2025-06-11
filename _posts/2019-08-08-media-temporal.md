@@ -1,5 +1,5 @@
 ---
-title: Average in Eq.
+title: Time Average in equilibrium.
 #author: cotes
 date: 2019-08-08 11:33:00 +0800
 categories: [Data analysis, awk]
@@ -13,7 +13,7 @@ hidden: true
 
 <hr>
 
-Code used in <code class="language-plaintext highlighter-rouge">calcular_media.sh</code> to average the equilibrium densities from every sample.
+Code used in <code class="language-plaintext highlighter-rouge">calcular_media.sh</code> to average over time the equilibrium densities from each sample.
 
 [Download file](/files/scripts/data_analysis/media_temporal_equilibrio.awk){:download}
 
