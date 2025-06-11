@@ -1,5 +1,5 @@
 ---
-title: Time Average in equilibrium.
+title: Time average in equilibrium
 #author: cotes
 date: 2019-08-08 11:33:00 +0800
 categories: [Data analysis, awk]
