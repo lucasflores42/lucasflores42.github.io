@@ -13,7 +13,11 @@ hidden: true
 <hr>
 
 
-Code to apply <code class="language-plaintext highlighter-rouge">media_temporal_equilibrio.awk</code>. in all files, merging every equilibrium density from every sample in the same file with the parameter values.
+Code to apply 
+<a href="{% post_url 2019-08-08-media-temporal %}">
+    <code class="language-plaintext highlighter-rouge">media_temporal_equilibrio.awk</code>
+</a>
+in all files, merging every equilibrium density from every sample in the same file with the parameter values.
 
 My simulation files have the parameter values in it so I can extract them and put as columns in this code.
 For example, <code class="language-plaintext highlighter-rouge">square_r1.700000_g0.000000_d0.200000_seed1673476071.txt</code>.
@@ -28,12 +32,10 @@ Run with <code class="language-plaintext highlighter-rouge">./calcular_media.awk
 
 ```awk
 # coloca num mesmo arquivo varias densidades no equilibrio de diferentes arquivos atraves do media_temporal_lucas
-
 # hashtag apaga antes e porcentagem depois
-
 # example: 
 #    parameter_aux = ${name#*_parameter}
-#    gama=${parameter_aux%_parameter2*}
+#    parameter_value=${parameter_aux%_parameter2*}
 
 #!/bin/bash
 export LC_NUMERIC="en_US.UTF-8" # no terminal caso esteja plotando virgula
@@ -54,6 +56,5 @@ do
     awk -f media_temporal_equilibrio.awk $name
 
 done
-
 ```
 
