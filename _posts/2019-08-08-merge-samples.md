@@ -51,7 +51,7 @@ do
 
     echo -n "$R $gama $delta "  
 
-    awk -f media_temporal_equilibrio.awk $name
+    awk -f time_average.awk $name
 
 done
 ```
