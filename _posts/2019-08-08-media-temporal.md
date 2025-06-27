@@ -8,6 +8,7 @@ pin: false
 math: true
 mermaid: true
 hidden: true
+toc: false
 ---
 
 
