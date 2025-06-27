@@ -18,7 +18,7 @@ Useful to check stability time.
 
 Run with <code class="language-plaintext highlighter-rouge">gnuplot code.gp</code>.
 
-[Download file](/files/scripts/data_analysis/estabilidade.gp){:download}
+[Download file](/files/scripts/data_analysis/stability.gp){:download}
 
 ```bash
 #set terminal postscript eps enhanced color

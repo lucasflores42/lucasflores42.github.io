@@ -8,19 +8,19 @@ pin: false
 math: true
 mermaid: true
 hidden: true
-toc: false
+panel_includes: false
 ---
 
 
 <hr>
 
 Code used in 
-<a href="{% post_url 2019-08-08-calcular-media %}">
-    <code class="language-plaintext highlighter-rouge">calcular_media.sh</code>
+<a href="{% post_url 2019-08-08-merge-samples %}">
+    <code class="language-plaintext highlighter-rouge">merge_samples.sh</code>
 </a> 
 to average over time the densities from each sample.
 
-[Download file](/files/scripts/data_analysis/media_temporal_equilibrio.awk){:download}
+[Download file](/files/scripts/data_analysis/time_average.awk){:download}
 
 
 ```awk

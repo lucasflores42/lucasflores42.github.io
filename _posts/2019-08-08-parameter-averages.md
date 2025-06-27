@@ -14,14 +14,14 @@ hidden: true
 <hr>
 
 Code to take the average between samples from one file. Use after merging everything with 
-<a href="{% post_url 2019-08-08-calcular-media %}">
-    <code class="language-plaintext highlighter-rouge">calcular_media.sh</code>
+<a href="{% post_url 2019-08-08-merge-samples %}">
+    <code class="language-plaintext highlighter-rouge">merge_samples.sh</code>
 </a>. 
 Can be used to take averages in the equilibrium and also to take a time evolution average.
 
-Run with <code class="language-plaintext highlighter-rouge">awk -f code.awk file</code>.
+Run with <code class="language-plaintext highlighter-rouge">awk -f parameter_average.awk file</code>.
 
-[Download file](/files/scripts/data_analysis/media.awk){:download}
+[Download file](/files/scripts/data_analysis/parameter_average.awk){:download}
 
 ```awk
 # Comments:

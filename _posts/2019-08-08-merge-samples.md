@@ -14,20 +14,18 @@ hidden: true
 
 
 Code to apply 
-<a href="{% post_url 2019-08-08-media-temporal %}">
-    <code class="language-plaintext highlighter-rouge">media_temporal_equilibrio.awk</code>
+<a href="{% post_url 2019-08-08-time-average %}">
+    <code class="language-plaintext highlighter-rouge">time_average.awk</code>
 </a>
 in all files, merging every equilibrium density from every sample in the same file with the parameter values.
 
 My simulation files have the parameter values in it so I can extract them and put as columns in this code.
 For example, <code class="language-plaintext highlighter-rouge">square_r1.700000_g0.000000_d0.200000_seed1673476071.txt</code>.
 
+Run with <code class="language-plaintext highlighter-rouge">./merge_samples.sh > file</code>.
 
 
-Run with <code class="language-plaintext highlighter-rouge">./calcular_media.awk > file</code>.
-
-
-[Download file](/files/scripts/data_analysis/calcular_media_lucas.sh){:download}
+[Download file](/files/scripts/data_analysis/merge_samples.sh){:download}
 
 
 ```awk
