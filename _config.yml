@@ -16,7 +16,7 @@ timezone:
 
 title: Lucas S. Flores # the main title
 
-tagline: PhD Student # it will display as the sub-title
+tagline: Physics PhD # it will display as the sub-title
          
 description: >- # used by seo meta and the atom feed
   A minimal, responsive and feature-rich Jekyll theme for technical writing.

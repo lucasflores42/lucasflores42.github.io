@@ -8,7 +8,7 @@ toc: true
 
 ## Education
 ---
-**Physics PhD**  *2021 - Now*  
+**Physics PhD**  *2021 - 2025*  
 
 *Universidade Federal do Rio Grande do Sul, UFRGS, Brasil*
 - Advisor: Mendeli H. Vainstein
