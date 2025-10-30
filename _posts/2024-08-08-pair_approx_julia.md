@@ -12,6 +12,7 @@ hidden: true
 
 <hr>
 
+[Download file](/files/scripts/julia/pair_approx_lucas.jl){:download}
 
 In structured populations, finding analytical results is extremely difficult. Normally, models of  evolutionary dynamics in lattices resort to Monte Carlo simulations. Pair approximation is one approach to try to replicate them, but via differential equations, without the need to run simulations (hauert2005).
 

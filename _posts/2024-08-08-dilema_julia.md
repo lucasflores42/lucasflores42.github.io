@@ -12,6 +12,7 @@ hidden: true
 
 <hr>
 
+[Download file](/files/scripts/julia/dilema.jl){:download}
 
 
 ## Packages

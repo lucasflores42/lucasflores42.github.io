@@ -15,7 +15,7 @@ hidden: true
 
 Code with most regular lattices defined to be used in a main.c code.
 
-[Download file](/files/scripts/regular_lattices.h){:download}
+[Download file](/files/scripts/C/regular_lattices.h){:download}
 
 
 

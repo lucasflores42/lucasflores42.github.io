@@ -1,89 +1,32 @@
-# Comments:
-#
-# Tira a media de dados com ate 3 parametros que estão no mesmo arquivo e os parametros iguais estao em sequencia
-
-# se plotar com virgular escrever no terminal: export LC_NUMERIC="en_US.UTF-8"
-# se tiver que usar menos parametros botar o inicial e final no fixo que ta no arquivo
-
-#usar uma vez dentro do calcular_media.sh para juntar as evoluçoes em um mesmo arquivo
-#usar denovo nesse novo arquivo com todas evoluçoes para tirar media
-
 BEGIN {
-count1 = 0;
-count2 = 0;
-count3 = 0;
+    # Initialize variables
+    count3 = 0;
 }
 
 {
-	parametro1 = sprintf("%.3f", $1);
-	parametro2 = sprintf("%.3f", $2);
-	parametro3 = sprintf("%.3f", $3);
+    # Round the values to 3 decimal places for consistency
+    parametro2 = sprintf("%.3f", $2);
+    parametro3 = sprintf("%.3f", $1);
+    value4 = $3;
 
-	for(j=1;j<=NF;j++)
-	{
-		media[parametro1,parametro2,parametro3,j] += $j; 
-	}   		
-	imax[parametro1,parametro2,parametro3] += 1;		
-	#printf "%f %f %f %d\n",parametro1,parametro2,parametro3, imax[parametro1,parametro2,parametro3]
-
-	desvio1[parametro1,parametro2,parametro3] += $2;
-	desvio2[parametro1,parametro2,parametro3] += $2*$2; 	
-
-	#-------------------------------------------------------------
-	
-	
-    if (!(parametro1 in seen_parametro1)) 
-	{
-        parametro1_array[count1] = parametro1;
-        seen_parametro1[parametro1] = 1;  # Mark parametro1 as seen
-        count1++;
-    }
-
-	if (!(parametro2 in seen_parametro2)) 
-	{
-        parametro2_array[count2] = parametro2;
-        seen_parametro2[parametro2] = 1;  # Mark parametro2 as seen
-        count2++;
-    }
-	if (!(parametro3 in seen_parametro3)) 
-	{
+    # Track unique values of column 3
+    if (!(parametro3 in seen_parametro3)) {
         parametro3_array[count3] = parametro3;
-        seen_parametro3[parametro3] = 1;  # Mark parametro3 as seen
+        seen_parametro3[parametro3] = 1;
         count3++;
     }
 
-
+    # Update the maximum value of column 4 for each value of column 3
+    if (!(parametro3 in max_value) || value4 > max_value[parametro3]) {
+        max_value[parametro3] = value4;
+        best_parametro2[parametro3] = parametro2;
+    }
 }
 
 END {
-
-	
-	for (i = 0; i < count1; i++)
-	{  
-		parametro1 = parametro1_array[i];
-		
-		for (k = 0; k < count2; k++)
-		{
-			parametro2 = parametro2_array[k];
-			max_value = -100;
-			
-			for (w = 0; w < count3; w++)
-			{ 
-				parametro3 = parametro3_array[w];
-
-				a = imax[parametro1,parametro2,parametro3];
-				avg_value = media[parametro1,parametro2,parametro3,4]/a;
-				
-				if (avg_value > max_value) 
-				{ 	
-					#printf "%f %f %f\n", parametro1, parametro2, parametro3
-					max_value = avg_value;
-					final[parametro1,parametro2] = parametro3;
-				}	
-			}
-		printf "%f %f %f\n", parametro1, parametro2, final[parametro1,parametro2]
-		}
-	}
+    # Output the results
+    for (i = 0; i < count3; i++) {
+        parametro3 = parametro3_array[i];
+        printf "%f %f %f\n", parametro3, best_parametro2[parametro3], max_value[parametro3];
+    }
 }
-
-
