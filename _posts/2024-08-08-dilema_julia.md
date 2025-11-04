@@ -26,10 +26,10 @@ using OffsetArrays, StructArrays, PlutoUI, Printf, DelimitedFiles, Statistics , 
 
 ```julia
 mutable struct Players
-	index::Int64
+    index::Int64
     strategy::Int64
     contribution::Float64
-	payoff::Float64
+    payoff::Float64
 end
 ```
 
@@ -134,7 +134,7 @@ function update_rule(player, x, y)
 
 	if Wxy > a
 	    player[x].strategy = player[y].strategy
-		player[x].contribution = player[y].contribution	
+	    player[x].contribution = player[y].contribution	
 	end
 end
 ```
