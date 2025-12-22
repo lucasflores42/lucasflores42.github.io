@@ -15,7 +15,7 @@ toc: true
 - Co-advisor: Heitor C. M. Fernandes
 
   - *Internship at International Centre For Theoretical Physics (Advisor: Matteo Marsili)*
-  - *Internship at Max Planck Institute of Evolutionary Biology (Advisor: Arne Traulsen)*
+  - *Internship at Max Planck Institute for Evolutionary Biology (Advisor: Arne Traulsen)*
 
 **Physics B.Sc.**  *2017 - 2021*
 
