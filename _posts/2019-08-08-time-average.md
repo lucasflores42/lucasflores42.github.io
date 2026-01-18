@@ -29,25 +29,25 @@ to average over time the densities from each sample.
 # se plotar com virgular escrever no terminal: export LC_NUMERIC="en_US.UTF-8"
 
 BEGIN { 
-	#printf export LC_NUMERIC="en_US.UTF-8"      
-	i=0;
+    #printf export LC_NUMERIC="en_US.UTF-8"      
+    i=0;
 }
 {
-	if ($1 >=70000) 
-	{
-		for(j=1;j<=NF;j++)
-		{
-			media[j] += $j; 
-			#print media[j]
-		}  						
-		++i;
-	}    
+    if ($1 >=70000) 
+    {
+        for(j=1;j<=NF;j++)
+        {
+            media[j] += $j; 
+            #print media[j]
+        }                          
+        ++i;
+    }    
 }
 END { 
-	for(j=2;j<=NF;j++)
-	{
-		printf "%s ",media[j]/i
-	}  
-	printf "\n"
+    for(j=2;j<=NF;j++)
+    {
+        printf "%s ",media[j]/i
+    }  
+    printf "\n"
 }
 ```
