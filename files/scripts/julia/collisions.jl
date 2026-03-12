@@ -1,21 +1,3 @@
----
-title: Physics simulation - particle collisions
-#author: cotes
-date: 2026-01-08 11:33:00 +0800
-categories: [Physics]
-tags: [code, julia, physics]
-pin: true
-math: true
-mermaid: true
-hidden: true
----
-
-<hr>
-
-[Download file](/files/scripts/julia/collisions.jl){:download}
-
-
-```julia
 using Plots, LinearAlgebra, Printf
 
 mutable struct Particle
@@ -214,4 +196,3 @@ function main()
 end
 
 main()
-```
