@@ -4,7 +4,7 @@ title: Pair approximation
 date: 2024-08-08 11:33:00 +0800
 categories: [Evolutionary Game Theory, Julia]
 tags: [code, julia]
-pin: false
+pin: true
 math: true
 mermaid: true
 hidden: true
@@ -12,16 +12,15 @@ hidden: true
 
 <hr>
 
-[Download file](/files/scripts/julia/pair_approx_lucas.jl){:download}
 
 In structured populations, finding analytical results is extremely difficult. Normally, models of  evolutionary dynamics in lattices resort to Monte Carlo simulations. Pair approximation is one approach to try to replicate them, but via differential equations, without the need to run simulations (hauert2005).
 
-We will focus on pairs of interacting players $p_{A,B}$, and all pairs connecting to A and B. The figure below shows an illustration of that, where x,y,z denotes the three connections of A and u,v,w the connections of B.
+Lets focus on pairs of interacting players $p_{A,B}$, and all pairs connecting them The figure below shows an illustration of that, where x,y,z denotes the three connections of A and u,v,w the connections of B.
 
 
 <figure style="margin: 2rem auto; text-align: center;">
   <img src="/assets/img/pairs.png" alt="Alt text" style="width: 300px; height: auto;">
-  <figcaption>Illustration of the notation for the neighbors of the pair (A,B), where blue stands for cooperators and red for defectors. Note also that, if one strategy changes, not only the (A,B) pair changes. If A copies the strategy of B, we get $+2(d,c)-2(d,c)$, and $+2(c,c)$. If B copies the strategy of A, we get $-3(c,c)$ and $-1(d,c)+3(d,c)$.  </figcaption>
+  <figcaption>Illustration of the notation for the neighbors of the pair (A,B), where blue stands for cooperators and red for defectors. Note also that, if one strategy changes, not only the (A,B) pair changes. For this example,if A copies the strategy of B, we get $+2(d,c)-2(d,c)$, and $+2(c,c)$. If B copies the strategy of A, we get $-3(c,c)$ and $-1(d,c)+3(d,c)$.  </figcaption>
 </figure>
 
 ---
@@ -34,11 +33,11 @@ p_{A,B\rightarrow B,B} = \sum_{x,y,z}\sum_{u,v,w} f(P_B - P_A) \times \frac{p_{x
 \end{align}
 $$
 
-where $f(P_B - P_A)$ is the probability of strategy adoption (normally the Fermi equation), and $p_{i,A}$ is the probability that the pair (i,A) have the strategy of A and the strategy of i given by the sum. With the sums, we consider all possible strategy pairs in all three directions of connections of each player interacting.
+where $f(P_B - P_A)$ is the probability of strategy adoption (normally the Fermi equation). In total we have six sums and all go from 0 to 1 to consider all possible neighborhoods of the pair (A,B). For example, $p_{x,A}$ can be $p_{0,A}$ ($p_{1,A}$) which is the probability of A having a defector (cooperator) as neighbor in the x direction.  
 
 
-
-In the end, we need two differential equations, that are given by
+In total, we would need four variables: $p_{c,c}$, $p_{d,d}$, $p_{c,d}$ and $p_{d,c}$. 
+But since $p_{c,d} = p_{d,c}$ and $p_{c,c} + p_{d,d} + p_{c,d} + p_{d,c} = 1$, we need two differential equations, that are given by
 
 
 $$
