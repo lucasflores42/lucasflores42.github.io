@@ -218,8 +218,12 @@ end
 main()
 ```
 
-<div style="text-align: center;">
-  <video width="50%" controls style="border: 3px solid #000000ff; border-radius: 8px;">
-    <source src="/assets/videos/collisions.mp4" type="video/mp4">
-  </video>
+<div style="text-align: center;">    
+    <strong style="display: block; font-size: 1.1em;"></strong> <!-- title -->
+        <video width="50%" controls style="border: 1px solid #000000ff; border-radius: 8px;">
+            <source src="/assets/videos/collisions.mp4" type="video/mp4">
+        </video>
+<div style="margin-top: 10px;">
+    <span style="color: #666; font-style: italic;">Example of particle collision with gravity.</span>
+</div>
 </div>
