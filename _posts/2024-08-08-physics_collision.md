@@ -218,4 +218,6 @@ end
 main()
 ```
 
-{% include embed/video.html src='/assets/videos/collisions.mp4' %}
+<video width="100%" controls>
+  <source src="/assets/videos/collisions.mp4" type="video/mp4">
+</video>
