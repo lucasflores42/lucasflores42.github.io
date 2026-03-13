@@ -12,6 +12,8 @@ hidden: true
 
 <hr>
 
+Work in progress.
+
 [Download file](/files/scripts/julia/collisions.jl){:download}
 
 
@@ -215,3 +217,7 @@ end
 
 main()
 ```
+
+{% 
+    include embed/video.html src='{/path/to/sample/video.mp4}' 
+%}

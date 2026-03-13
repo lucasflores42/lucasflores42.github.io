@@ -1,6 +1,6 @@
 ---
-title: Physics simulation - fluid simulation
-date: 2026-01-08 11:33:00 +0800
+title: Physics simulation - fluids
+date: 2026-03-12 11:33:00 +0800
 categories: [Physics]
 tags: [code, julia, physics]
 pin: true
@@ -10,6 +10,10 @@ hidden: true
 ---
 
 <hr>
+
+
+The kernel and pressure equations are used from this paper: SPH Fluids in Computer Graphics, EUROGRAPHICS 2014.
+
 
 [Download file](/files/scripts/julia/fluids.jl){:download}
 
