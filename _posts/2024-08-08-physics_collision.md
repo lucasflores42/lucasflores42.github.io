@@ -217,7 +217,3 @@ end
 
 main()
 ```
-
-{% 
-    include embed/video.html src='{/path/to/sample/video.mp4}' 
-%}
