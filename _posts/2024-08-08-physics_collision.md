@@ -218,6 +218,8 @@ end
 main()
 ```
 
-<video width="70%" controls>
-  <source src="/assets/videos/collisions.mp4" type="video/mp4">
-</video>
+<div style="text-align: center;">
+  <video width="80%" controls>
+    <source src="/assets/videos/collisions.mp4" type="video/mp4">
+  </video>
+</div>
