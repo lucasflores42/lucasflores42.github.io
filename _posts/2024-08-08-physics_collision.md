@@ -217,3 +217,5 @@ end
 
 main()
 ```
+
+{% include embed/video.html src='/assets/videos/collisions.mp4' %}
