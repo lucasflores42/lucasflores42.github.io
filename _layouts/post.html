@@ -32,6 +32,7 @@ tail_includes:
         </span>
       {% endif %}
 
+      <!--  
       {% if page.image %}
         {% capture src %}src="{{ page.image.path | default: page.image }}"{% endcapture %}
         {% capture class %}class="preview-img{% if page.image.no_bg %}{{ ' no-bg' }}{% endif %}"{% endcapture %}
@@ -48,7 +49,8 @@ tail_includes:
           {%- endif -%}
         </div>
       {% endif %}
-
+        -->
+      
       <div class="d-flex justify-content-between">
         <!-- author(s) -->
         <span>

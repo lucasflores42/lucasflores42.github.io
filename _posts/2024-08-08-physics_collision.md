@@ -8,6 +8,8 @@ pin: true
 math: true
 mermaid: true
 hidden: true
+image:
+  path: /assets/img/collisions.png
 ---
 
 <hr>
@@ -16,6 +18,8 @@ Work in progress.
 
 [Download file](/files/scripts/julia/collisions.jl){:download}
 
+
+## Simulation code
 
 ```julia
 using Plots, LinearAlgebra, Printf
@@ -218,7 +222,9 @@ end
 main()
 ```
 
-<div style="text-align: center;">    
+## Simulation video
+
+<div style="text-align: left;">    
     <strong style="display: block; font-size: 1.1em;"></strong> <!-- title -->
         <video width="50%" controls style="border: 1px solid #000000ff; border-radius: 8px;">
             <source src="/assets/videos/collisions.mp4" type="video/mp4">

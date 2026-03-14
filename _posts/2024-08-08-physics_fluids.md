@@ -7,16 +7,20 @@ pin: true
 math: true
 mermaid: true
 hidden: true
+image:
+  path: /assets/img/fluid.png
 ---
 
 <hr>
 
+Work in progress.
 
 The kernel and pressure equations are used from this paper: SPH Fluids in Computer Graphics, EUROGRAPHICS 2014.
 
 
 [Download file](/files/scripts/julia/fluids.jl){:download}
 
+## Simulation code
 
 ```julia
 using Plots, LinearAlgebra, Printf
@@ -266,3 +270,27 @@ end
 
 main()
 ```
+
+## Simulation video
+
+<div style="display: flex; gap: 20px; align-items: stretch;">
+  <!-- Video 1 -->
+  <div style="flex: 1; display: flex; flex-direction: column;">
+    <video controls style="width: 100%; border: 1px solid #000000ff; border-radius: 8px;">
+      <source src="/assets/videos/fluids1.mp4" type="video/mp4">
+    </video>
+    <div style="margin-top: 10px; flex-grow: 1;">
+      <span style="color: #666; font-style: italic;">Example 1 of SPH fluid simulation.</span>
+    </div>
+  </div>
+  
+  <!-- Video 2 -->
+  <div style="flex: 1; display: flex; flex-direction: column;">
+    <video controls style="width: 100%; border: 1px solid #000000ff; border-radius: 8px;">
+      <source src="/assets/videos/fluids2.mp4" type="video/mp4">
+    </video>
+    <div style="margin-top: 10px; flex-grow: 1;">
+      <span style="color: #666; font-style: italic;">Example 2 of SPH fluid simulation.</span>
+    </div>
+  </div>
+</div>
