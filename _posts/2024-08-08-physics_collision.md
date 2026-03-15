@@ -1,5 +1,5 @@
 ---
-title: Physics simulation - particle collisions
+title: Physics simulation - collisions
 #author: cotes
 date: 2026-01-08 11:33:00 +0800
 categories: [Physics]
