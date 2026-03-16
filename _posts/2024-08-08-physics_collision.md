@@ -14,7 +14,50 @@ image:
 
 <hr>
 
-Work in progress.
+We will consider a classical elastic collision of two particles. From conservation of momentum, we have
+
+$$
+m_1 v_1 + m_2 v_2 = m_1 v_1^{'} + m_2 v_2^{'}
+$$
+
+and considering 
+
+$$
+C = \frac{|v_2^{'} - v_1^{'}|}{|v_2 - v_1|}
+$$
+
+we can control how elastic the collision is. Considering
+
+$$
+v_2' = v_1' - C (v_2 - v_1),
+$$
+
+and replacing into the momentum conservation equation we get
+
+$$
+m_1 v_1' + m_2 \left[ v_1' - C (v_2 - v_1) \right]
+= m_1 v_1 + m_2 v_2,
+$$
+
+$$
+(m_1 + m_2) v_1' - m_2 C (v_2 - v_1)
+= m_1 v_1 + m_2 v_2,
+$$
+
+resulting in
+
+$$
+v_1' =
+v_1 +
+\frac{m_2}{m_1 + m_2}(1 + C)(v_2 - v_1)
+$$
+
+$$
+v_2' =
+v_2 -
+\frac{m_1}{m_1 + m_2}(1 + C)(v_2 - v_1).
+$$
+
 
 [Download file](/files/scripts/julia/collisions.jl){:download}
 
