@@ -1,7 +1,7 @@
 ---
 title: Twin paradox without acceleration
-date: 2026-03-15 11:33:00 +0800
-categories: [Physics]
+date: 2027-03-15 11:33:00 +0800
+categories: []
 tags: [physics]
 pin: true
 math: true
