@@ -14,7 +14,7 @@ image:
 
 <hr>
 
-Work in progress.
+Work in progress. assadsa
 
 
 [Download file](/files/scripts/julia/rigid_body.jl){:download}
