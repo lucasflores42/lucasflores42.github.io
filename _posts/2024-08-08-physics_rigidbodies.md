@@ -14,7 +14,88 @@ image:
 
 <hr>
 
-Work in progress. 
+Lets consider a rigid body composed of $n$ particles with mass $m_\alpha$, with $\alpha = 1,2,...,n$. If we assume that the body moves with velocity V and rotates with an angular velocity $\omega$, the velocity of an individual particle is given by
+
+$$
+v_\alpha = V + \omega \times r_\alpha .
+$$
+
+The kinetic energy is given by
+
+$$
+\begin{aligned}
+K_\alpha &= \frac{1}{2} m_\alpha v_{\alpha}^{2} \\
+K = \sum_\alpha K_\alpha &= \frac{1}{2} \sum_\alpha m_\alpha (V + \omega \times r_\alpha) \\
+&= \frac{1}{2} \sum_\alpha m_\alpha V^2 +  V \dot \omega \times \sum_\alpha (m_\alpha r_\alpha) + \frac{1}{2} \sum_\alpha m_\alpha (\omega \times r_\alpha)^2 .
+\end{aligned}
+$$
+
+The second term vanishes since $\sum_\alpha (m_\alpha r_\alpha)$ is the center of mass position. Thus we get
+
+$$
+\begin{aligned}
+    T_{trans} &= \frac{1}{2} M V^2 \\
+    T_{rot} &= \frac{1}{2} \sum_\alpha m_\alpha (\omega \times r_\alpha)^2.
+\end{aligned}
+$$
+
+Using the relation $(A \times B)^2 = (A \times B) \cdot (A \times B) = A^2 B^2 - (A \cdot B)^2$, 
+
+$$
+T_{rot} = \frac{1}{2} \sum_\alpha m_\alpha \big[ \omega^2 r_{\alpha}^2 - (\omega \cdot r_{\alpha})^2 \big].
+$$
+
+If we denote $r_\alpha = (x_{\alpha,1}, x_{\alpha,2}, x_{\alpha,3})$, and also $\omega_i = \sum_j \omega_j \delta_{ij}$, we can rewrite $T_{rot}$ so that
+
+$$
+T_{rot} = \frac{1}{2} \sum_{ij} \omega_i \omega_j
+ \sum_\alpha m_\alpha \bigg( \delta_{ij} \sum_k x_{\alpha,k}^2 - x_{\alpha,i} x_{\alpha,j} \bigg),
+$$
+
+we can define the Inertia tensor
+
+$$
+I_{ij} = \sum_\alpha m_\alpha \bigg( \delta_{ij} \sum_k x_{\alpha,k}^2 - x_{\alpha,i} x_{\alpha,j} \bigg)
+$$
+
+where now 
+
+$$
+\begin{aligned}
+T_{rot} &= \frac{1}{2} \sum_{ij} I_{ij} \omega_i \omega_j \\
+        &= \frac{1}{2} I \omega^2 .
+\end{aligned}
+$$
+
+In the simulation, the important part will be to use $I$. Its expanded form is 
+
+$$
+\begin{aligned}
+I = 
+\begin{Bmatrix}
+\sum_{\alpha} m_{\alpha} (x_{\alpha, 2}^2 + x_{\alpha, 3}^2) & -\sum_{\alpha} m_{\alpha} x_{\alpha, 1} x_{\alpha, 2} & -\sum_{\alpha} m_{\alpha} x_{\alpha, 1} x_{\alpha, 3} \\
+-\sum_{\alpha} m_{\alpha} x_{\alpha, 2} x_{\alpha, 1} & \sum_{\alpha} m_{\alpha} (x_{\alpha, 1}^2 + x_{\alpha, 3}^2) & -\sum_{\alpha} m_{\alpha} x_{\alpha, 2} x_{\alpha, 3} \\
+-\sum_{\alpha} m_{\alpha} x_{\alpha, 3} x_{\alpha, 1} & -\sum_{\alpha} m_{\alpha} x_{\alpha, 3} x_{\alpha, 2} & \sum_{\alpha} m_{\alpha} (x_{\alpha, 1}^2 + x_{\alpha, 2}^2)
+\end{Bmatrix}
+\end{aligned}
+$$
+
+We also will need to calculate the angular momentum. With a similar calculation from above, we can arrive at the equation 
+
+$$
+\begin{aligned}
+L_i &= \sum_j I_{ij} \omega_j \\
+L &= I \omega.
+\end{aligned}
+$$
+
+A change in angular momentum is given by a torque
+
+$$
+\tau = \dot L = \sum_\alpha r_\alpha \times F_\alpha.
+$$
+
+Note that I omitted the vector notation, but $\tau, L, \omega, r, F$ are all three dimensional vectors.
 
 
 [Download file](/files/scripts/julia/rigid_body.jl){:download}
