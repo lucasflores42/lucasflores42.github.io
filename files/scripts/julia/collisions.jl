@@ -5,42 +5,35 @@ mutable struct Particle
     velocity::Vector{Float64}
     acceleration::Vector{Float64}
     mass::Float64
-    material::String
     radius::Float64
-    rigidbody::Int64
 end
 
 function initialize_particles()
+
     particles = Vector{Particle}(undef, num_particles)
-    id = 1
 
     for i in 1:num_particles
-        particles[id] = Particle(
+        particles[i] = Particle(
             [rand()*box_size/2, rand()*box_size, rand()*box_size],          # position
             [0,0,0],                                                        # velocity
             [0.0, 0.0, 0.0],                                                # acceleration
             200.0,                                                          # mass
-            "stone",                                                        # material 
-            0.5,                                                              # radius
-            0,                                                         	    # rigidbody
+            0.5                                                             # radius
         )
-
-        id += 1
     end
 
     return particles
 end
 
 function apply_gravity!(particles)
+
     for i in 1:length(particles)
-        if particles[i].material == "stone"
             
             # Gravity 
             Fi_gravity = particles[i].mass * [0.0, 0.0, -10]  
 
             particles[i].velocity .+= (Fi_gravity / particles[i].mass) .* dt
             particles[i].position .+= particles[i].velocity * dt
-        end
     end
 end
 
@@ -73,10 +66,8 @@ function calculate_colision!(particle1,particle2)
         dv2 = - (1 + colision_restitution_coefficient) * m1 / (m1 + m2) * dot(v2 - v1, x2 - x1) * (x2 - x1) / r^2
         particle1.velocity .+= dv1
         particle2.velocity .+= dv2
-
-        if particle1.material == "stone" || particle2.material == "stone"
-            #@printf "%s vel=%s %s vel=%s\n" particle1.material string(dv1) particle2.material string(dv2) 
-        end
+        
+        #@printf "%s vel=%s %s vel=%s\n" particle1.material string(dv1) particle2.material string(dv2) 
         
     end
 end
@@ -133,30 +124,20 @@ function visualize_sph(particles, step)
     y = [p.position[2] for p in particles]
     z = [p.position[3] for p in particles]
 
-    markersizes = [p.radius * 20 for p in particles]  
-
-    colors = []
-    for p in particles
-        color_map = Dict(
-            "sand" => :yellow,
-            "air" => :gray,
-            "stone" => :blue
-        )
-        push!(colors, get(color_map, p.material, :black))
-    end
+    markersizes = [p.radius * 15 for p in particles]  
 
     plt = scatter3d(x, y, z,
             markersize=markersizes,  
-            markercolor=colors,
+            #markercolor=colors,
             xlim=(0, box_size),
             ylim=(0, box_size),
             zlim=(0, box_size),
             title="Time $(round(step, digits=2))s",
             xlabel="Y", ylabel="X", zlabel="Z",
             legend=false,
-            camera=(30, 60),
-            size=(400, 500),
-            alpha=0.7
+            camera=(30, 30),
+            size=(500, 600),
+            alpha=1.0
     )
     
     return plt
