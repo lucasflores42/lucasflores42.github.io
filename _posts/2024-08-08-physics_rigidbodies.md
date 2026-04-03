@@ -20,7 +20,7 @@ $$
 v_\alpha = V + \omega \times r_\alpha .
 $$
 
-The kinetic energy is given by
+where $r_\alpha$ is the relative position to the body reference frame. The kinetic energy is given by
 
 $$
 \begin{aligned}
@@ -49,16 +49,16 @@ If we denote $r_\alpha = (x_{\alpha,1}, x_{\alpha,2}, x_{\alpha,3})$, and also $
 
 $$
 T_{rot} = \frac{1}{2} \sum_{ij} \omega_i \omega_j
- \sum_\alpha m_\alpha \bigg( \delta_{ij} \sum_k x_{\alpha,k}^2 - x_{\alpha,i} x_{\alpha,j} \bigg),
+ \sum_\alpha m_\alpha \bigg( \delta_{ij} \sum_k x_{\alpha,k}^2 - x_{\alpha,i} x_{\alpha,j} \bigg).
 $$
 
-we can define the Inertia tensor
+Now we can define the Inertia tensor
 
 $$
 I_{ij} = \sum_\alpha m_\alpha \bigg( \delta_{ij} \sum_k x_{\alpha,k}^2 - x_{\alpha,i} x_{\alpha,j} \bigg)
 $$
 
-where now 
+resulting in
 
 $$
 \begin{aligned}
