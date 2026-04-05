@@ -13,9 +13,76 @@ image:
 
 <hr>
 
-Work in progress.
+Generally, a small change in $\delta T$ is given by a change $\delta x, \delta y, \delta z$ and $\delta t$,
 
-The kernel and pressure equations are used from this paper: SPH Fluids in Computer Graphics, EUROGRAPHICS 2014.
+$$
+\begin{aligned}
+\delta T &= \frac{\partial T}{\partial t}\,\delta t 
++ \frac{\partial T}{\partial x}\,\delta x 
++ \frac{\partial T}{\partial y}\,\delta y 
++ \frac{\partial T}{\partial z}\,\delta z \\
+\frac{D T}{Dt} &= \frac{\partial T}{\partial t}\, 
++ \frac{\partial T}{\partial x}\, u 
++ \frac{\partial T}{\partial y}\, v
++ \frac{\partial T}{\partial z}\, w
+\end{aligned}
+$$
+
+where $D/Dt$ denotes the rate of change of a quantity $T$ following the fluid. In vector form,
+
+$$
+\frac{D}{Dt} = \frac{\partial }{\partial t} + \mathbf{u} \cdot \nabla .
+$$
+
+This expression accounts not only for temporal changes (e.g., variations in pressure over time), but also for situations in which the field is time-independent while the particle moves through space, experiencing different values of the field at different positions.
+
+The leftside of Newton's second law for fluids using forces per volume is then
+
+$$
+\rho \frac{D \mathbf{u}}{Dt}.
+$$
+
+The right side is the sum of all forces acting on the fluid. Some forces are external and given by specific problems, such as gravity. On the other hand, the forces due to pressure and viscosity are related to a velocity field and need to be considered for all situations. 
+
+For that purpose, let's consider a fluid box of dimensions $\delta x, \delta y, \delta z$. 
+Let's also consider a change in pressure only in the $x$ direction, where pressure is defined as force per unit area. For a specific $x$, the force due to pressure is $P_x \delta y \delta z$. Therefore the net force is
+
+$$
+\begin{aligned}
+F_{net} &= P_x \delta y \delta z - P_{x + \delta x} \, \delta y \, \delta z \\
+&= - \frac{P_{x + \delta x}- P_x}{\delta x} \, \delta x \, \delta y \, \delta z \\
+&= - \frac{\partial P}{\partial x} \, \delta x \, \delta y \, \delta z \\
+\mathbf{f_{net}} &= -\nabla \mathbf{P} , ~~~~~~~\text{for three dimensions.}
+\end{aligned}
+$$
+
+For the viscosity term, lets consider a stress force (viscous action) in the $y$ direction given by $\mu \frac{\partial u}{\partial y} \delta x \delta z$ where $\mu$ is the coefficient of viscosity of the fluid (a fluid with constant viscosity is called a Newtoninan fluid). The net force is the difference from of viscous stress in $\delta y$, 
+
+$$
+\begin{aligned}
+F_{net} &= 
+\left[ \mu \left( \frac{\partial u}{\partial y} \right)_{y+\delta y}
+- \mu \left( \frac{\partial u}{\partial y} \right)_{y} \right]
+\delta x \, \delta z \\
+&=
+\frac{\partial}{\partial y}
+\left( \mu \frac{\partial u}{\partial y} \right)
+\delta y \, \delta x \, \delta z \\
+&= \mu \frac{\partial^2 u}{\partial y^2} \delta x \, \delta y \, \delta z\\
+\mathbf{f_{net}} &= \mu \nabla^2 \mathbf{u} , ~~~~~~~\text{for three dimensions.}
+\end{aligned}
+$$
+
+
+Putting all together we end up with the famous Navier-Stokes equation
+
+$$
+\rho \frac{D \mathbf{u}}{D t} = -\nabla \mathbf{P} + \mu \nabla^2 \mathbf{u} + \mathbf{f_{ext}}
+$$
+
+
+
+For the simulation, the kernel and pressure equations are used from this paper: SPH Fluids in Computer Graphics, EUROGRAPHICS 2014.
 
 
 [Download file](/files/scripts/julia/fluids.jl){:download}
