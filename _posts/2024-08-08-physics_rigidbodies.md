@@ -462,3 +462,12 @@ main()
 
 ## Simulation video
 
+<div style="text-align: left;">    
+    <strong style="display: block; font-size: 1.1em;"></strong> <!-- title -->
+        <video width="70%" controls style="border: 1px solid #000000ff; border-radius: 8px;">
+            <source src="/assets/videos/rigidbody.mp4" type="video/mp4">
+        </video>
+<div style="margin-top: 10px;">
+    <span style="color: #666; font-style: italic;">Example of particle collision with gravity.</span>
+</div>
+</div>
