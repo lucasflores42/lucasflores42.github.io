@@ -34,21 +34,21 @@ The second term vanishes since $\sum_\alpha (m_\alpha r_\alpha)$ is the center o
 
 $$
 \begin{aligned}
-    T_{trans} &= \frac{1}{2} M V^2 \\
-    T_{rot} &= \frac{1}{2} \sum_\alpha m_\alpha (\omega \times r_\alpha)^2.
+    K_{trans} &= \frac{1}{2} M V^2 \\
+    K_{rot} &= \frac{1}{2} \sum_\alpha m_\alpha (\omega \times r_\alpha)^2.
 \end{aligned}
 $$
 
 Using the relation $(A \times B)^2 = (A \times B) \cdot (A \times B) = A^2 B^2 - (A \cdot B)^2$, 
 
 $$
-T_{rot} = \frac{1}{2} \sum_\alpha m_\alpha \big[ \omega^2 r_{\alpha}^2 - (\omega \cdot r_{\alpha})^2 \big].
+K_{rot} = \frac{1}{2} \sum_\alpha m_\alpha \big[ \omega^2 r_{\alpha}^2 - (\omega \cdot r_{\alpha})^2 \big].
 $$
 
-If we denote $r_\alpha = (x_{\alpha,1}, x_{\alpha,2}, x_{\alpha,3})$, and also $\omega_i = \sum_j \omega_j \delta_{ij}$, we can rewrite $T_{rot}$ so that
+If we denote $r_\alpha = (x_{\alpha,1}, x_{\alpha,2}, x_{\alpha,3})$, and also $\omega_i = \sum_j \omega_j \delta_{ij}$, we can rewrite $K_{rot}$ so that
 
 $$
-T_{rot} = \frac{1}{2} \sum_{ij} \omega_i \omega_j
+K_{rot} = \frac{1}{2} \sum_{ij} \omega_i \omega_j
  \sum_\alpha m_\alpha \bigg( \delta_{ij} \sum_k x_{\alpha,k}^2 - x_{\alpha,i} x_{\alpha,j} \bigg).
 $$
 
@@ -62,7 +62,7 @@ resulting in
 
 $$
 \begin{aligned}
-T_{rot} &= \frac{1}{2} \sum_{ij} I_{ij} \omega_i \omega_j \\
+K_{rot} &= \frac{1}{2} \sum_{ij} I_{ij} \omega_i \omega_j \\
         &= \frac{1}{2} I \omega^2 .
 \end{aligned}
 $$
