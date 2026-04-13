@@ -573,6 +573,6 @@ main()
             <source src="/assets/videos/rigidbody.mp4" type="video/mp4">
         </video>
 <div style="margin-top: 10px;">
-    <span style="color: #666; font-style: italic;">Example of particle collision with gravity.</span>
+    <span style="color: #666; font-style: italic;">Example of rigid body collision.</span>
 </div>
 </div>
