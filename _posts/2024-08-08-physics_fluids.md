@@ -360,4 +360,16 @@ main()
       <span style="color: #666; font-style: italic;">Example 2 of SPH fluid simulation.</span>
     </div>
   </div>
+
 </div>
+
+
+ <!-- Video 3 -->
+  <div style="flex: 1; display: flex; flex-direction: column;">
+    <video controls style="width: 100%; border: 1px solid #000000ff; border-radius: 8px;">
+      <source src="/assets/videos/fluids3.mp4" type="video/mp4">
+    </video>
+    <div style="margin-top: 10px; flex-grow: 1;">
+      <span style="color: #666; font-style: italic;">Gravitational force with fluid dynamics.</span>
+    </div>
+  </div>

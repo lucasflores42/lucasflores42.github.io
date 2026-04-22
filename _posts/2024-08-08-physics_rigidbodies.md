@@ -576,3 +576,13 @@ main()
     <span style="color: #666; font-style: italic;">Example of rigid body collision.</span>
 </div>
 </div>
+
+<div style="text-align: left;">    
+    <strong style="display: block; font-size: 1.1em;"></strong> <!-- title -->
+        <video width="70%" controls style="border: 1px solid #000000ff; border-radius: 8px;">
+            <source src="/assets/videos/rigidbody2.mp4" type="video/mp4">
+        </video>
+<div style="margin-top: 10px;">
+    <span style="color: #666; font-style: italic;">Example of rigid sphere with gravity and fluid.</span>
+</div>
+</div>
