@@ -133,6 +133,65 @@ function create_sphere!(particles, rigidbodies, id, offset, v_init, ω_init)
     ))
 end
 
+
+function create_disk!(particles, rigidbodies, id, disk_radius, offset, v_init, ω_init)
+
+    # x2+y2=R2−z2
+    particle_radius = 0.2
+    particle_diam = 2 * particle_radius 
+    thickness = 0.01
+
+    positions = []
+
+    for z in -thickness:particle_radius:thickness
+        for x in -disk_radius:particle_radius:disk_radius
+            for y in -disk_radius:particle_radius:disk_radius
+
+                if x^2 + y^2 + z^2 <= disk_radius^2 
+                    push!(positions, [x, y, z])
+                end
+
+            end
+        end
+    end
+
+    indices = Int[]
+
+    for pos in positions
+        p = Particle(
+            offset .+ pos,
+            [0.0,0.0,0.0],
+            [0.0,0.0,0.0],
+            1000.0,
+            "solid",
+            particle_radius,
+            id
+        )
+        push!(particles, p)
+        push!(indices, length(particles))
+    end
+
+    # CM
+    cm = calculate_center_of_mass([particles[i] for i in indices])[1]
+
+    r_list = Vector{Vector{Float64}}()
+
+    # velocity
+    for i in indices
+        r = particles[i].position .- cm
+        push!(r_list, copy(r))
+
+        particles[i].velocity .= cross(ω_init, r)
+    end
+
+    push!(rigidbodies, RigidBody(
+        id,
+        indices,
+        cm,
+        v_init,  
+        ω_init
+    ))
+end
 # -----------------------------------------------------------------------------
 #                       Force Calculation 
 # -----------------------------------------------------------------------------
@@ -179,7 +238,7 @@ function update_rigidbody!(particles, rb)
     =#
 
     # translation 
-    a = [0.0, 0.0, -0.0]
+    a = [0.0, 0.0, -30.0]
     rb.V .+= a .* dt
     rb.cm .+= rb.V .* dt 
 
@@ -240,9 +299,9 @@ function calculate_center_of_mass(particles)
     return [cm_x / total_mass, cm_y / total_mass, cm_z / total_mass], total_mass
 end
 # -----------------------------------------------------------------------------
-#                           Calculate colisions
+#                           Calculate collisions
 # -----------------------------------------------------------------------------
-function calculate_colision!(particle1,particle2, particles, rigidbodies)
+function calculate_collision!(particle1,particle2, particles, rigidbodies)
 
     r_vec = particle1.position - particle2.position
     r = norm(r_vec)
@@ -261,8 +320,8 @@ function calculate_colision!(particle1,particle2, particles, rigidbodies)
         total_mass = m1 + m2
 
         r = particle1.radius + particle2.radius
-        dv1 = - (1 + colision_restitution_coefficient) * m2 / (m1 + m2) * dot(v1 - v2, x1 - x2) * (x1 - x2) / r^2
-        dv2 = - (1 + colision_restitution_coefficient) * m1 / (m1 + m2) * dot(v2 - v1, x2 - x1) * (x2 - x1) / r^2
+        dv1 = - (1 + collision_restitution_coefficient) * m2 / (m1 + m2) * dot(v1 - v2, x1 - x2) * (x1 - x2) / r^2
+        dv2 = - (1 + collision_restitution_coefficient) * m1 / (m1 + m2) * dot(v2 - v1, x2 - x1) * (x2 - x1) / r^2
          
         if particle1.rigidbody != 0
 
@@ -317,11 +376,11 @@ function calculate_colision!(particle1,particle2, particles, rigidbodies)
     end
 end
 
-function calculate_colisions!(particles,rigidbodies)
+function calculate_collisions!(particles,rigidbodies)
     for i in 1:length(particles)
         for j in i+1:length(particles)
             #if particles[i].material == "water" || particles[i].material != particles[j].material
-                calculate_colision!(particles[i],particles[j], particles, rigidbodies)
+                calculate_collision!(particles[i],particles[j], particles, rigidbodies)
             #end
         end
     end
@@ -347,29 +406,86 @@ function apply_boundary_conditions!(particles)
     end
 end
 
-# not accurate
 function apply_boundary_conditions_rigidbodies!(particles, rigidbodies)
 
     for rb in rigidbodies
+
+        M = sum(particles[i].mass for i in rb.particle_indices)
+        I = calculate_inertia_tensor(particles, rb)
+        invI = inv(I)
+
         for i in rb.particle_indices
             p = particles[i]
+
             for d in 1:3
+
+                # --------------------------------------------------
+                # LOWER WALL
+                # --------------------------------------------------
                 if p.position[d] < p.radius
-                    p.position[d] = p.radius
-                    rb.V[d] *= -damping
+
+                    old_p = p.position[d]
+                    new_p = p.radius
+                    shift = new_p - old_p
+
+                    # contact point BEFORE correction
+                    r_rel = p.position .- rb.cm
+
+                    # shift entire rigid body
+                    for j in rb.particle_indices
+                        particles[j].position[d] += shift
+                    end
+                    rb.cm[d] += shift
+
+                    # normal direction
+                    normal = zeros(3)
+                    normal[d] = 1.0
+
+                    # rigid velocity at contact
+                    v_contact = rb.V .+ cross(rb.ω, r_rel)
+
+                    vn = dot(v_contact, normal)
+
+                    if vn < 0
+                        dv = -(1 + damping) * vn * normal
+                        Δp = p.mass .* dv
+
+                        rb.V .+= Δp / M
+                        rb.ω .+= invI * cross(r_rel, Δp)
+                    end
+
+                # --------------------------------------------------
+                # UPPER WALL
+                # --------------------------------------------------
                 elseif p.position[d] > box_size - p.radius
-                    p.position[d] = box_size - p.radius
-                    rb.V[d] *= -damping
-                    rb.V[d] *= -damping
+
+                    old_p = p.position[d]
+                    new_p = box_size - p.radius
+                    shift = new_p - old_p
+
+                    r_rel = p.position .- rb.cm
+
+                    for j in rb.particle_indices
+                        particles[j].position[d] += shift
+                    end
+                    rb.cm[d] += shift
+
+                    normal = zeros(3)
+                    normal[d] = -1.0
+
+                    v_contact = rb.V .+ cross(rb.ω, r_rel)
+
+                    vn = dot(v_contact, normal)
+
+                    if vn < 0
+                        dv = -(1 + damping) * vn * normal
+                        Δp = p.mass .* dv
+
+                        rb.V .+= Δp / M
+                        rb.ω .+= invI * cross(r_rel, Δp)
+                    end
                 end
             end
-        end
-
-        # particle velocities from rigid body
-        for i in rb.particle_indices
-            p = particles[i]
-            r = p.position .- rb.cm
-            p.velocity .= rb.V .+ cross(rb.ω, r)
         end
     end
 end
@@ -378,7 +494,7 @@ end
 # -----------------------------------------------------------------------------
 function simulate_step!(particles, rigidbodies)
 
-    calculate_colisions!(particles, rigidbodies)
+    calculate_collisions!(particles, rigidbodies)
     calculate_rigidbodies!(particles, rigidbodies)
     
     apply_boundary_conditions!(particles)
@@ -422,8 +538,8 @@ const damping = 0.0
 
 const smoothing_length = 0.1
 
-# colision
-const colision_restitution_coefficient = 0.0
+# collision
+const collision_restitution_coefficient = 0.0
 const gravity_coef = 0.1
 
 # -----------------------------------------------------------------------------
@@ -436,8 +552,12 @@ function main()
 
     #create_cube!(particles, rigidbodies, 1, [5-0.8,5,8], [0,0,-20], [0,0.0,0.0])
     #create_cube!(particles, rigidbodies, 2, [5,5,3], [0,0,0], [0,0,0.0])
-    create_sphere!(particles, rigidbodies, 1, [7.5,5,4.5], [-10,0,0], [0,0,0])
-    create_sphere!(particles, rigidbodies, 2, [3,5,5], [5,0,0], [0,0,0])
+    #create_sphere!(particles, rigidbodies, 1, [5,5,7.5], [-10,0,0], [0,0,0])
+    #create_sphere!(particles, rigidbodies, 2, [5,5,3], [5,0,0], [0,0,0])
+
+    #create_disk!(particles, rigidbodies, 1, 4, [5,5,1], [0,0,0], [0,0,0])
+
+    create_disk!(particles, rigidbodies, 1, 1, [5,5,3], [2,2,0], [-3,3,0])
     
     t = 0.0
     frame_count = 0
@@ -448,7 +568,7 @@ function main()
         if frame_count % save_interval == 0  # Save every X frame
             plt=visualize(particles, t)
             display(plt)
-            sleep(0.0001)  
+            sleep(0.01)  
         end
         simulate_step!(particles, rigidbodies)
         t += dt

@@ -346,9 +346,9 @@ function calculate_center_of_mass(particles)
     return [cm_x / total_mass, cm_y / total_mass, cm_z / total_mass], total_mass
 end
 # -----------------------------------------------------------------------------
-#                           Calculate colisions
+#                           Calculate collisions
 # -----------------------------------------------------------------------------
-function calculate_colision!(particle1,particle2, particles, rigidbodies)
+function calculate_collision!(particle1,particle2, particles, rigidbodies)
 
     r_vec = particle1.position - particle2.position
     r = norm(r_vec)
@@ -367,8 +367,8 @@ function calculate_colision!(particle1,particle2, particles, rigidbodies)
         total_mass = m1 + m2
 
         r = particle1.radius + particle2.radius
-        dv1 = - (1 + colision_restitution_coefficient) * m2 / (m1 + m2) * dot(v1 - v2, x1 - x2) * (x1 - x2) / r^2
-        dv2 = - (1 + colision_restitution_coefficient) * m1 / (m1 + m2) * dot(v2 - v1, x2 - x1) * (x2 - x1) / r^2
+        dv1 = - (1 + collision_restitution_coefficient) * m2 / (m1 + m2) * dot(v1 - v2, x1 - x2) * (x1 - x2) / r^2
+        dv2 = - (1 + collision_restitution_coefficient) * m1 / (m1 + m2) * dot(v2 - v1, x2 - x1) * (x2 - x1) / r^2
          
         if particle1.rigidbody != 0
 
@@ -423,11 +423,11 @@ function calculate_colision!(particle1,particle2, particles, rigidbodies)
     end
 end
 
-function calculate_colisions!(particles,rigidbodies)
+function calculate_collisions!(particles,rigidbodies)
     for i in 1:length(particles)
         for j in i+1:length(particles)
             #if particles[i].material == "water" || particles[i].material != particles[j].material
-                calculate_colision!(particles[i],particles[j], particles, rigidbodies)
+                calculate_collision!(particles[i],particles[j], particles, rigidbodies)
             #end
         end
     end
@@ -484,7 +484,7 @@ end
 # -----------------------------------------------------------------------------
 function simulate_step!(particles, rigidbodies)
 
-    calculate_colisions!(particles, rigidbodies)
+    calculate_collisions!(particles, rigidbodies)
     calculate_rigidbodies!(particles, rigidbodies)
     
     apply_boundary_conditions!(particles)
@@ -528,8 +528,8 @@ const damping = 0.0
 
 const smoothing_length = 0.1
 
-# colision
-const colision_restitution_coefficient = 0.0
+# collision
+const collision_restitution_coefficient = 0.0
 const gravity_coef = 0.1
 
 # -----------------------------------------------------------------------------

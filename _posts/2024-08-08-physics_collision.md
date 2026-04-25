@@ -104,9 +104,9 @@ function apply_gravity!(particles)
     end
 end
 
-function calculate_colision!(particle1,particle2)
+function calculate_collision!(particle1,particle2)
 
-    # elastic colision with restitution
+    # elastic collision with restitution
     # m1 v1 + m2 v2 = m1 v1' + m2 v2'
     # C = |v2' - v1'|/|v2 - v1|
 
@@ -129,8 +129,8 @@ function calculate_colision!(particle1,particle2)
         particle2.position .-= overlap * normal * (m1 / total_mass)
 
         r = particle1.radius + particle2.radius
-        dv1 = - (1 + colision_restitution_coefficient) * m2 / (m1 + m2) * dot(v1 - v2, x1 - x2) * (x1 - x2) / r^2
-        dv2 = - (1 + colision_restitution_coefficient) * m1 / (m1 + m2) * dot(v2 - v1, x2 - x1) * (x2 - x1) / r^2
+        dv1 = - (1 + collision_restitution_coefficient) * m2 / (m1 + m2) * dot(v1 - v2, x1 - x2) * (x1 - x2) / r^2
+        dv2 = - (1 + collision_restitution_coefficient) * m1 / (m1 + m2) * dot(v2 - v1, x2 - x1) * (x2 - x1) / r^2
         particle1.velocity .+= dv1
         particle2.velocity .+= dv2
         
@@ -172,17 +172,17 @@ function apply_boundary_conditions!(particles)
     end
 end
 
-function calculate_colisions!(particles)
+function calculate_collisions!(particles)
     for i in 1:length(particles)
         for j in i+1:length(particles)
-            calculate_colision!(particles[i],particles[j])
+            calculate_collision!(particles[i],particles[j])
         end
     end
 end
 
 function simulate_step!(particles)
     apply_gravity!(particles)
-    calculate_colisions!(particles)
+    calculate_collisions!(particles)
     apply_boundary_conditions!(particles)
 end
 
@@ -219,8 +219,8 @@ const box_size = 10.0
 const damping = 0.0
 
 
-# colision
-const colision_restitution_coefficient = 0.0
+# collision
+const collision_restitution_coefficient = 0.0
 const gravity_coef = 0.1
 
 function main()
